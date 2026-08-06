@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/littlevoices/soundsafari/(.*)", "destination": "/littlevoices/soundsafari/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
