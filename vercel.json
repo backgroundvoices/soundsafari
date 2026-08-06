@@ -1,6 +1,24 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(.*)\\.vercel\\.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/littlevoices/soundsafari/(.*)", "destination": "/littlevoices/soundsafari/index.html" },
+    { "source": "/littlevoices/soundsafari", "destination": "/littlevoices/soundsafari/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
