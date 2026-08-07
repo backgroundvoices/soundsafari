@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, Sparkles, ArrowRight, ArrowLeft, RefreshCw, Star, CheckCircle, Layers } from 'lucide-react';
+import { Volume2, Sparkles, ArrowRight, ArrowLeft, Star, CheckCircle, Layers } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CVC_WORDS } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
@@ -123,9 +123,11 @@ export function WordBakery({ onAwardStar }) {
     setWordIndex((prev) => (prev - 1 + filteredList.length) % filteredList.length);
   };
 
+  // Says the word, never its letters: spelling it out would hand over the
+  // answer the child is here to work out.
   const speakPrompt = () => {
     audioEngine.playAudioEffect('click');
-    audioEngine.speakText(`Spell ${currentWord.word}! ${currentWord.letters.join(' . ')} . ${currentWord.word}!`, { rate: 0.75 });
+    audioEngine.speakText(`${currentWord.prompt} Listen: ${currentWord.word}!`, { rate: 0.8 });
   };
 
   return (
@@ -217,11 +219,6 @@ export function WordBakery({ onAwardStar }) {
             ))}
           </div>
         </div>
-
-        <button className="btn-tertiary reset-word-btn" onClick={() => initWord(currentWord)}>
-          <RefreshCw className="icon-xs" />
-          <span>Reset Letters</span>
-        </button>
       </div>
     </div>
   );
