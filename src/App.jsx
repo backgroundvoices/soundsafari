@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { NavigationHeader } from './components/NavigationHeader';
 import { PhonicsJungle } from './components/PhonicsJungle';
 import { WordBakery } from './components/WordBakery';
-import { RhymeTime } from './components/RhymeTime';
 import { BlendsLab } from './components/BlendsLab';
 import { SentenceSafari } from './components/SentenceSafari';
 import { SayAndPlay } from './components/SayAndPlay';
@@ -50,9 +49,6 @@ export default function App() {
         )}
         {currentMode === 'words' && (
           <WordBakery onAwardStar={handleAwardStar} />
-        )}
-        {currentMode === 'rhyme' && (
-          <RhymeTime onAwardStar={handleAwardStar} />
         )}
         {currentMode === 'blends' && (
           <BlendsLab onAwardStar={handleAwardStar} />

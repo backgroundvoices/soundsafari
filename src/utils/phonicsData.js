@@ -392,75 +392,6 @@ export const CVC_WORDS = [
   { id: 'yam', word: 'YAM', letters: ['Y', 'A', 'M'], emoji: '🍠', category: 'Food', prompt: 'Can you spell YAM?' }
 ];
 
-export const RHYME_DATA = [
-  {
-    id: 'r1',
-    targetWord: 'CAT',
-    targetEmoji: '🐱',
-    options: [
-      { word: 'HAT', emoji: '🎩', isRhyme: true },
-      { word: 'DOG', emoji: '🐶', isRhyme: false },
-      { word: 'SUN', emoji: '☀️', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with CAT? CAT and ...'
-  },
-  {
-    id: 'r2',
-    targetWord: 'BUG',
-    targetEmoji: '🐞',
-    options: [
-      { word: 'BUS', emoji: '🚌', isRhyme: false },
-      { word: 'RUG', emoji: '🪡', isRhyme: true },
-      { word: 'FOX', emoji: '🦊', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with BUG? BUG and ...'
-  },
-  {
-    id: 'r3',
-    targetWord: 'PEN',
-    targetEmoji: '🖊️',
-    options: [
-      { word: 'HEN', emoji: '🐔', isRhyme: true },
-      { word: 'PIG', emoji: '🐷', isRhyme: false },
-      { word: 'BED', emoji: '🛏️', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with PEN? PEN and ...'
-  },
-  {
-    id: 'r4',
-    targetWord: 'SUN',
-    targetEmoji: '☀️',
-    options: [
-      { word: 'CAR', emoji: '🚗', isRhyme: false },
-      { word: 'RUN', emoji: '🏃', isRhyme: true },
-      { word: 'CUP', emoji: '🥤', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with SUN? SUN and ...'
-  },
-  {
-    id: 'r5',
-    targetWord: 'FOX',
-    targetEmoji: '🦊',
-    options: [
-      { word: 'BOX', emoji: '📦', isRhyme: true },
-      { word: 'BAT', emoji: '🦇', isRhyme: false },
-      { word: 'NET', emoji: '🕸️', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with FOX? FOX and ...'
-  },
-  {
-    id: 'r6',
-    targetWord: 'BEE',
-    targetEmoji: '🐝',
-    options: [
-      { word: 'TREE', emoji: '🌳', isRhyme: true },
-      { word: 'BED', emoji: '🛏️', isRhyme: false },
-      { word: 'JET', emoji: '✈️', isRhyme: false }
-    ],
-    hint: 'Which word rhymes with BEE? BEE and ...'
-  }
-];
-
 export const SENTENCES_DATA = [
   {
     "id": "s1",
@@ -1809,7 +1740,7 @@ export const STICKERS = [
   { id: 'stk_mic', name: 'Voice Champion', emoji: '🎙️', description: 'Spoke out loud!' },
   { id: 'stk_heart', name: 'Kindergarten Star', emoji: '💖', description: 'Ready for School!' },
   { id: 'stk_rainbow', name: 'Rainbow Reader', emoji: '🌈', description: 'Completed all levels!' },
-  { id: 'stk_music', name: 'Rhyme Master', emoji: '🎵', description: 'Matched 3 rhyming pairs!' },
+  { id: 'stk_music', name: 'Sound Star', emoji: '🎵', description: 'Heard every letter sound!' },
   { id: 'stk_blend', name: 'Blend Wizard', emoji: '🧩', description: 'Explored CH, SH & TH!' },
   { id: 'stk_dino', name: 'Dino Reader', emoji: '🦖', description: 'Mastered 20 words!' },
   { id: 'stk_grad', name: 'Pre-K Graduate', emoji: '🎓', description: 'School Ready Expert!' }

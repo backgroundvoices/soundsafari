@@ -11,7 +11,6 @@
 - **🧁 Word Bakery**: 40+ CVC words with category filters (Animals, Home, Nature, Vehicles, Food).
 - **🦁 Sentence Safari**: 100 interactive 3–6 word reading sentences with real-time word read-along highlighting and sentence randomizer.
 - **🧩 Digraphs & Blends Lab**: 25 blends (CH, SH, TH, WH, BL, CL, FL, ST, TR, DR, etc.) with spoken anchor prompts.
-- **🎵 Rhyme Time**: Interactive sound-matching game for rhyming word pairs.
 - **⭐ Gamification**: Unlockable sticker rewards album and parental speech rate controls.
 
 ---

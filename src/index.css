@@ -710,7 +710,7 @@ button {
   margin-top: 2px;
 }
 
-/* WORD BAKERY, RHYME TIME & SENTENCE SAFARI STAGES */
+/* WORD BAKERY & SENTENCE SAFARI STAGES */
 .spelling-stage, .sentence-stage {
   padding: 36px;
   display: flex;
@@ -781,7 +781,7 @@ button {
 }
 
 /* Choices Bank */
-.choices-bank-section, .word-bank-section, .rhyme-options-section {
+.choices-bank-section, .word-bank-section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -819,57 +819,6 @@ button {
 .letter-tile-btn:hover {
   transform: translateY(-4px) scale(1.06);
   box-shadow: 0 10px 24px rgba(56, 189, 248, 0.5);
-}
-
-/* Rhyme Choice Cards */
-.rhyme-cards-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  justify-content: center;
-  margin-top: 8px;
-}
-
-.rhyme-choice-card {
-  width: 150px;
-  height: 160px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.rhyme-choice-card:hover {
-  transform: translateY(-4px) scale(1.05);
-  background: rgba(255, 255, 255, 0.16);
-  border-color: #fbbf24;
-}
-
-.rhyme-choice-card.correct-glow {
-  background: rgba(52, 211, 153, 0.25);
-  border-color: #34d399;
-  box-shadow: 0 0 30px #34d399;
-}
-
-.rhyme-choice-card.wrong-shake {
-  background: rgba(244, 63, 94, 0.25);
-  border-color: #f43f5e;
-}
-
-.choice-emoji {
-  font-size: 3.5rem;
-}
-
-.choice-word {
-  font-family: var(--font-rounded);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #ffffff;
 }
 
 .word-card-btn {

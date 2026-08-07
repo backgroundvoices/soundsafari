@@ -11,7 +11,6 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
     { id: 'words', label: 'Word Bakery', icon: '🧁', prompt: 'Word Bakery! Spell common CVC words.' },
     { id: 'sentences', label: 'Sentence', icon: '🦁', prompt: 'Sentence Safari! Build simple sentences.' },
     { id: 'blends', label: 'Blend', icon: '🧩', prompt: 'Blends Lab! Learn CH, SH, TH and blend sounds.' },
-    { id: 'rhyme', label: 'Rhyme', icon: '🎵', prompt: 'Rhyme Time! Find matching rhyming words.' },
     { id: 'halloffame', label: 'Trophies', icon: '🏆', prompt: 'Trophy Hall of Fame! Look at your shiny medals and trophies!' }
   ];
 
