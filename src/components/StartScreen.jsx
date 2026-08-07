@@ -29,11 +29,11 @@ export function StartScreen({ onStart }) {
           </div>
           <div className="feature-chip">
             <span className="chip-icon">🧁</span>
-            <span>40+ CVC Word Builder</span>
+            <span>CVC Word Bakery</span>
           </div>
           <div className="feature-chip">
             <span className="chip-icon">🦁</span>
-            <span>100 Sentence Safari</span>
+            <span>Sentence Safari</span>
           </div>
           <div className="feature-chip">
             <span className="chip-icon">🎙️</span>

@@ -155,7 +155,7 @@ export function SentenceSafari({ onAwardStar }) {
     <div className="mode-container sentence-safari">
       <div className="mode-header glass-panel">
         <div className="title-area">
-          <h2>🦁 Sentence Safari (100 Sentences!)</h2>
+          <h2>🦁 Sentence Safari</h2>
           <p>Arrange word cards to create simple sentences. Random & fresh every time!</p>
         </div>
 

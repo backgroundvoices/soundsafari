@@ -37,7 +37,7 @@ export function BlendsLab({ onAwardStar }) {
     <div className="mode-container blends-lab">
       <div className="mode-header glass-panel">
         <div className="title-area">
-          <h2>🧩 Digraphs & Blends Lab (25 Blends!)</h2>
+          <h2>🧩 Digraphs & Blends Lab</h2>
           <p>Learn how two letters combine to make special sounds!</p>
         </div>
 
