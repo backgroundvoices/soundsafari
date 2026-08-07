@@ -6,6 +6,7 @@ import { RhymeTime } from './components/RhymeTime';
 import { BlendsLab } from './components/BlendsLab';
 import { SentenceSafari } from './components/SentenceSafari';
 import { SayAndPlay } from './components/SayAndPlay';
+import { HallOfFame } from './components/HallOfFame';
 import { RewardStickerModal } from './components/RewardStickerModal';
 import { SettingsModal } from './components/SettingsModal';
 import { audioEngine } from './utils/audioEngine';
@@ -61,6 +62,9 @@ export default function App() {
         )}
         {currentMode === 'voice' && (
           <SayAndPlay onAwardStar={handleAwardStar} />
+        )}
+        {currentMode === 'halloffame' && (
+          <HallOfFame starsCount={starsCount} />
         )}
       </main>
 

@@ -1409,3 +1409,332 @@ button {
 
 .text-gold { color: #fbbf24; }
 .text-green { color: #34d399; }
+
+/* TROPHY ROOM
+   The room is a painting with empty fixtures in it — a star tracker board, a
+   medal rack and a shelf — so awards are placed on those fixtures by
+   percentage rather than laid out in a grid (see utils/trophyRoom.js). The
+   whole page is sized to the viewport: the room is the point, so it must be
+   visible without scrolling. The stage is a size container, so every award
+   scales with the room instead of drifting off its hook. */
+.trophy-room-page {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 8px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* App header, this page's bar, and the padding around them. */
+  --room-chrome: 200px;
+  /* 1920 / 1047, the room artwork's aspect ratio. */
+  --room-ratio: 1.8338;
+}
+
+.trophy-room-fit {
+  display: flex;
+  justify-content: center;
+}
+
+/* Whichever runs out first — the width of the page or the height left under
+   the bar — decides how big the room is drawn. */
+.trophy-room-stage {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, calc((100dvh - var(--room-chrome)) * var(--room-ratio)));
+  aspect-ratio: 1920 / 1047;
+}
+
+.trophy-room-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Awards sit directly on their fixture, so they carry no chrome of their own. */
+.room-star-board,
+.room-medal,
+.room-trophy {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@keyframes award-drop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    filter: drop-shadow(0 0 0.18cqw rgba(255, 214, 92, 0.75));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 0.55cqw rgba(255, 240, 160, 1));
+    transform: scale(1.14);
+  }
+}
+
+/* The soft pool of light that lifts an award off the painted wall. */
+@keyframes award-halo {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(0.9); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes award-sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  45% { opacity: 1; transform: scale(1.15) rotate(15deg); }
+}
+
+.award-sparkle {
+  position: absolute;
+  pointer-events: none;
+  animation: award-sparkle 2.6s ease-in-out infinite;
+}
+
+/* 1. STARS — inside the star tracker whiteboard */
+.room-star-board {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 0.25cqw;
+  padding: 0.25cqw;
+  /* The board is a fixed rectangle on the wall; nothing may spill off it. */
+  overflow: hidden;
+}
+
+.room-board-star {
+  font-size: 1.15cqw;
+  line-height: 1;
+  animation:
+    award-drop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards,
+    star-twinkle 3.2s ease-in-out infinite;
+}
+
+.room-board-more {
+  font-family: var(--font-rounded);
+  font-size: 1.1cqw;
+  font-weight: 700;
+  color: #b45309;
+  width: 100%;
+  text-align: center;
+}
+
+/* 2. MEDALS — hanging from the hooks on the medal rack */
+.room-medal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+  transform-origin: top center;
+  animation: award-drop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  transition: filter 0.15s ease;
+}
+
+.room-medal::before {
+  content: '';
+  position: absolute;
+  top: 2.4cqw;
+  left: 50%;
+  width: 3.4cqw;
+  height: 3.4cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 243, 190, 0.6) 0%, rgba(255, 205, 90, 0.24) 45%, rgba(255, 205, 90, 0) 70%);
+  animation: award-halo 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.room-medal:hover,
+.room-medal:focus-visible {
+  filter: brightness(1.15);
+}
+
+.room-medal-ribbon {
+  position: relative;
+  z-index: 1;
+  width: 0.8cqw;
+  height: 2.6cqw;
+  background: linear-gradient(180deg, var(--ribbon-color) 0%, rgba(0, 0, 0, 0.5) 100%);
+  border-radius: 0 0 0.2cqw 0.2cqw;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.room-medal-disc {
+  position: relative;
+  z-index: 1;
+  font-size: 2.2cqw;
+  line-height: 1;
+  margin-top: -0.45cqw;
+  filter:
+    drop-shadow(0 0 0.32cqw rgba(255, 232, 140, 0.95))
+    drop-shadow(0 0.16cqw 0.22cqw rgba(0, 0, 0, 0.5));
+}
+
+.room-medal .award-sparkle {
+  top: 1.9cqw;
+  right: -0.7cqw;
+  font-size: 1.1cqw;
+}
+
+/* 3. TROPHIES — standing on the shelf plank */
+.room-trophy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%);
+  transform-origin: bottom center;
+  animation: award-drop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  transition: filter 0.15s ease;
+}
+
+.room-trophy:hover,
+.room-trophy:focus-visible {
+  filter: brightness(1.15);
+}
+
+.room-trophy::before {
+  content: '';
+  position: absolute;
+  bottom: 0.6cqw;
+  left: 50%;
+  width: 4.6cqw;
+  height: 4.6cqw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 243, 190, 0.6) 0%, rgba(255, 205, 90, 0.24) 45%, rgba(255, 205, 90, 0) 72%);
+  animation: award-halo 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.room-trophy-figure {
+  position: relative;
+  z-index: 1;
+  font-size: 3.2cqw;
+  line-height: 1;
+  /* An emoji glyph floats above the bottom of its line box; without this the
+     trophy hovers over the plank instead of standing on it. */
+  margin-bottom: -0.3em;
+  filter:
+    drop-shadow(0 0 0.4cqw rgba(255, 232, 140, 0.95))
+    drop-shadow(0 0.2cqw 0.28cqw rgba(0, 0, 0, 0.55));
+}
+
+.room-trophy .award-sparkle {
+  top: -0.5cqw;
+  right: -0.5cqw;
+  font-size: 1.5cqw;
+  z-index: 1;
+}
+
+/* The trophy's own shadow on the plank, so it reads as standing there. */
+.room-trophy::after {
+  content: '';
+  position: absolute;
+  bottom: -0.15cqw;
+  width: 2.7cqw;
+  height: 0.55cqw;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  filter: blur(0.3cqw);
+}
+
+/* Names stay out of the picture until an award is hovered or focused. */
+.room-award-name {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.4cqw;
+  padding: 0.3cqw 0.7cqw;
+  font-family: var(--font-rounded);
+  font-size: 1.1cqw;
+  font-weight: 700;
+  color: #fef3c7;
+  background: rgba(15, 23, 42, 0.92);
+  border-radius: 1cqw;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 2;
+}
+
+.room-medal:hover .room-award-name,
+.room-medal:focus-visible .room-award-name,
+.room-trophy:hover .room-award-name,
+.room-trophy:focus-visible .room-award-name {
+  opacity: 1;
+}
+
+/* The one-line bar above the room */
+.trophy-room-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 18px;
+  border-radius: 20px;
+}
+
+.trophy-room-bar h2 {
+  font-family: var(--font-rounded);
+  font-size: 1.25rem;
+  color: #fbbf24;
+}
+
+.fame-counters-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.counter-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+}
+
+.star-pill { border-color: rgba(251, 191, 36, 0.55); }
+.medal-pill { border-color: rgba(244, 63, 94, 0.55); }
+.trophy-pill { border-color: rgba(52, 211, 153, 0.55); }
+
+.pill-icon { font-size: 1.2rem; }
+
+.pill-val {
+  font-family: var(--font-rounded);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.pill-lbl {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.fame-next-up {
+  margin-left: auto;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.fame-next-up strong {
+  color: #fbbf24;
+}
+
+@media (max-width: 720px) {
+  .trophy-room-page { --room-chrome: 260px; }
+  .fame-next-up { margin-left: 0; }
+}

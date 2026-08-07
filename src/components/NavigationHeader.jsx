@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, Award, Settings, Sparkles, Menu, X } from 'lucide-react';
+import { Volume2, Award, Settings, Sparkles, Menu, X, Trophy } from 'lucide-react';
 import { audioEngine } from '../utils/audioEngine';
 
 export function NavigationHeader({ currentMode, setMode, starsCount, openStickers, openSettings }) {
@@ -11,7 +11,8 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
     { id: 'words', label: 'Word Bakery', icon: '🧁', prompt: 'Word Bakery! Spell common CVC words.' },
     { id: 'sentences', label: 'Sentence', icon: '🦁', prompt: 'Sentence Safari! Build simple sentences.' },
     { id: 'blends', label: 'Blend', icon: '🧩', prompt: 'Blends Lab! Learn CH, SH, TH and blend sounds.' },
-    { id: 'rhyme', label: 'Rhyme', icon: '🎵', prompt: 'Rhyme Time! Find matching rhyming words.' }
+    { id: 'rhyme', label: 'Rhyme', icon: '🎵', prompt: 'Rhyme Time! Find matching rhyming words.' },
+    { id: 'halloffame', label: 'Trophies', icon: '🏆', prompt: 'Trophy Hall of Fame! Look at your shiny medals and trophies!' }
   ];
 
   const handleModeClick = (mode) => {
@@ -21,8 +22,6 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
     setMode(mode.id);
     setIsMobileMenuOpen(false);
   };
-
-  const activeModeObj = modes.find(m => m.id === currentMode) || modes[0];
 
   return (
     <header className="app-header glass-panel">
