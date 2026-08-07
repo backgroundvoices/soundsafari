@@ -48,13 +48,13 @@ export function SayAndPlay({ onAwardStar }) {
     setTranscript('');
     setIsSuccess(false);
     setMicError('');
-    setStatusMessage(`Tap the mic button and say "${wordObj.word}"!`);
+    setStatusMessage('Tap the mic button and say this word out loud!');
   };
 
   const handleSelectWord = (index, wordItem) => {
     audioEngine.playAudioEffect('pop');
     setWordIndex(index);
-    audioEngine.speakText(`Selected ${wordItem.word}! ${wordItem.prompt}`, { rate: 0.85 });
+    audioEngine.speakText("Your turn! Tap the mic and say this word out loud!", { rate: 0.85 });
   };
 
   const handleListenClick = () => {

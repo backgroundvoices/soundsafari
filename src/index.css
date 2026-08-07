@@ -865,8 +865,8 @@ button {
 /* SAY AND PLAY SPLIT LAYOUT: Left Interaction Stage + Right Words List */
 .say-play-split-layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 20px;
+  grid-template-columns: 1fr 310px;
+  gap: 14px;
   align-items: stretch;
 }
 
@@ -878,10 +878,10 @@ button {
 
 /* Left Interaction Stage */
 .left-interaction-box {
-  padding: 28px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
   justify-content: space-between;
 }
 
@@ -889,10 +889,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   background: rgba(0, 0, 0, 0.2);
-  padding: 18px 24px;
-  border-radius: 22px;
+  padding: 10px 18px;
+  border-radius: 18px;
   flex-wrap: wrap;
 }
 
@@ -904,44 +904,44 @@ button {
 
 .target-word-title {
   font-family: var(--font-rounded);
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: #fbbf24;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   line-height: 1;
 }
 
 .target-emoji {
-  font-size: 4.5rem;
+  font-size: 3.2rem;
 }
 
 .interaction-core-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
 }
 
 .mic-action-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .mic-button {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12px 30px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 8px 22px rgba(244, 63, 94, 0.4);
 }
 
 .mic-button:hover {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 .mic-button.listening-pulse {
@@ -950,38 +950,38 @@ button {
 
 .mic-button.success-gold {
   background: linear-gradient(135deg, #34d399 0%, #059669 100%);
-  box-shadow: 0 12px 30px rgba(52, 211, 153, 0.4);
+  box-shadow: 0 8px 22px rgba(52, 211, 153, 0.4);
 }
 
 .icon-xl {
-  width: 54px;
-  height: 54px;
+  width: 42px;
+  height: 42px;
 }
 
-.icon-lg { width: 32px; height: 32px; }
-.icon-md { width: 22px; height: 22px; }
-.icon-sm { width: 18px; height: 18px; }
+.icon-lg { width: 28px; height: 28px; }
+.icon-md { width: 20px; height: 20px; }
+.icon-sm { width: 16px; height: 16px; }
 .icon-xs { width: 14px; height: 14px; }
 
 .waveform-visualizer {
   display: flex;
   align-items: flex-end;
-  gap: 6px;
-  height: 34px;
+  gap: 5px;
+  height: 26px;
 }
 
 .waveform-visualizer .bar {
-  width: 6px;
+  width: 5px;
   background: #f43f5e;
   border-radius: 4px;
   animation: wave 1s ease-in-out infinite alternate;
 }
 
-.bar1 { height: 12px; animation-delay: 0.1s; }
-.bar2 { height: 26px; animation-delay: 0.3s; }
-.bar3 { height: 34px; animation-delay: 0.2s; }
-.bar4 { height: 22px; animation-delay: 0.4s; }
-.bar5 { height: 14px; animation-delay: 0.15s; }
+.bar1 { height: 10px; animation-delay: 0.1s; }
+.bar2 { height: 20px; animation-delay: 0.3s; }
+.bar3 { height: 26px; animation-delay: 0.2s; }
+.bar4 { height: 18px; animation-delay: 0.4s; }
+.bar5 { height: 12px; animation-delay: 0.15s; }
 
 @keyframes wave {
   0% { transform: scaleY(0.3); }
@@ -992,62 +992,62 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .status-text {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
 }
 
 .transcript-chip {
   background: rgba(255, 255, 255, 0.1);
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-size: 0.95rem;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
 }
 
 .stage-controls-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   width: 100%;
   flex-wrap: wrap;
 }
 
 .quick-word-nav {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .compact-sim {
   background: rgba(0, 0, 0, 0.2);
-  padding: 10px 16px;
-  border-radius: 16px;
+  padding: 6px 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .compact-sim .sim-title {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
 .compact-sim .sim-btn {
-  padding: 6px 14px;
-  font-size: 0.85rem;
+  padding: 4px 10px;
+  font-size: 0.8rem;
 }
 
 /* Right Word Selection Panel */
 .right-words-panel {
-  padding: 24px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-height: 580px;
+  gap: 12px;
+  max-height: 440px;
 }
 
 .panel-header-strip {
