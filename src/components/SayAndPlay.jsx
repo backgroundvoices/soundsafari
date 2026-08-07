@@ -157,21 +157,20 @@ export function SayAndPlay({ onAwardStar }) {
       <div className="say-play-split-layout">
         {/* LEFT COLUMN: Main Interaction Stage */}
         <div className="left-interaction-box glass-panel">
-          {/* Target Word & Emoji Display */}
-          <div className="target-display-header">
+          {/* Centered Target Word Hero Display */}
+          <div className="hero-target-card">
+            <span className="target-emoji floating-anim">{targetObj.emoji}</span>
             <div className="target-title-block">
               <span className="target-word-title">{targetObj.word}</span>
               <span className="word-category-tag">{targetObj.category}</span>
             </div>
             
-            <span className="target-emoji floating-anim">{targetObj.emoji}</span>
-
             <button 
               className="btn-speaker sound-hint-btn" 
               onClick={handleHearSound}
               title="Hear Pronunciation"
             >
-              <Volume2 className="icon-md" />
+              <Volume2 className="icon-sm" />
               <span>Hear Sound</span>
             </button>
           </div>
@@ -214,20 +213,18 @@ export function SayAndPlay({ onAwardStar }) {
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Quick Word Nav */}
-            <div className="stage-controls-row">
-              <div className="quick-word-nav">
-                <button className="btn-secondary" onClick={prevWord}>
-                  <ArrowLeft className="icon-sm" />
-                  <span>Prev Word</span>
-                </button>
-                <button className="btn-primary" onClick={nextWord}>
-                  <span>Next Word</span>
-                  <ArrowRight className="icon-sm" />
-                </button>
-              </div>
-            </div>
+          {/* Quick Word Nav Buttons */}
+          <div className="quick-word-nav">
+            <button className="btn-secondary" onClick={prevWord}>
+              <ArrowLeft className="icon-sm" />
+              <span>Prev Word</span>
+            </button>
+            <button className="btn-primary" onClick={nextWord}>
+              <span>Next Word</span>
+              <ArrowRight className="icon-sm" />
+            </button>
           </div>
         </div>
 
