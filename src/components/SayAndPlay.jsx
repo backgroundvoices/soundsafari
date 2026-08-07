@@ -87,7 +87,7 @@ export function SayAndPlay({ onAwardStar }) {
         setIsListening(false);
         setMicError(msg);
         setStatusMessage(msg);
-        audioEngine.speakText("Tap the mic or try the speech simulator button!", { rate: 0.85 });
+        audioEngine.speakText("Tap the mic button to try speaking again!", { rate: 0.85 });
       },
       onEnd: () => {
         setIsListening(false);
@@ -95,8 +95,8 @@ export function SayAndPlay({ onAwardStar }) {
     });
 
     if (!started && !voiceRecognition.isSupported) {
-      setMicError('Web Speech Recognition is not supported in this browser. Use the Voice Simulator below!');
-      setStatusMessage('Use the Voice Simulator below to practice!');
+      setMicError('Speech recognition requires browser microphone permissions.');
+      setStatusMessage('Please enable microphone access in your browser to speak!');
     }
   };
 
@@ -123,29 +123,12 @@ export function SayAndPlay({ onAwardStar }) {
   const handleTryAgainResult = (spokenText) => {
     audioEngine.playAudioEffect('tryAgain');
     setStatusMessage(`Heard: "${spokenText}". Let's try again! Say "${targetObj.word}".`);
-    audioEngine.speakText(`Good try! Listen again: ${targetObj.word}!`, { rate: 0.8 });
+    audioEngine.speakText(`Good try! Say it into the mic again!`, { rate: 0.8 });
   };
 
-  const simulateVoiceInput = (simulateCorrect = true) => {
+  const handleHearSound = () => {
     audioEngine.playAudioEffect('click');
-    setIsListening(true);
-    setStatusMessage('🎙️ Simulating child speaking...');
-
-    setTimeout(() => {
-      setIsListening(false);
-      if (simulateCorrect) {
-        setTranscript(targetObj.word.toLowerCase());
-        handleSuccessResult(targetObj.word);
-      } else {
-        setTranscript('cat');
-        handleTryAgainResult('cat');
-      }
-    }, 1500);
-  };
-
-  const playTargetAudioPrompt = () => {
-    audioEngine.playAudioEffect('click');
-    audioEngine.speakText(`Say the word: ${targetObj.word}! ${targetObj.letters.join(' . ')} . ${targetObj.word}!`, { rate: 0.75 });
+    audioEngine.speakText(`${targetObj.word}! ${targetObj.prompt}`, { rate: 0.85 });
   };
 
   const nextWord = () => {
@@ -160,60 +143,55 @@ export function SayAndPlay({ onAwardStar }) {
 
   return (
     <div className="mode-container say-and-play">
-      {/* Top Header Bar */}
       <div className="mode-header glass-panel">
         <div className="title-area">
           <h2>🎙️ Say & Play (Voice Studio)</h2>
-          <p>Practice speaking words out loud: interaction box on left, word list on right!</p>
+          <p>Tap the microphone and say the word out loud to test your pronunciation!</p>
         </div>
 
         <div className="word-nav-controls">
-          <button className="btn-secondary nav-arrow" onClick={prevWord} title="Previous Word">
-            <ArrowLeft className="icon-md" />
-            <span>Prev</span>
-          </button>
           <span className="word-progress-badge">Word {wordIndex + 1} of {filteredWords.length}</span>
-          <button className="btn-secondary nav-arrow" onClick={nextWord} title="Next Word">
-            <span>Next</span>
-            <ArrowRight className="icon-md" />
-          </button>
         </div>
       </div>
 
-      {/* Optimized Main Layout: Left Interaction Stage + Right Word List Panel */}
       <div className="say-play-split-layout">
         {/* LEFT COLUMN: Main Interaction Stage */}
         <div className="left-interaction-box glass-panel">
+          {/* Target Word & Emoji Display */}
           <div className="target-display-header">
-            <span className="target-emoji floating-anim">{targetObj.emoji}</span>
             <div className="target-title-block">
+              <span className="target-word-title">{targetObj.word}</span>
               <span className="word-category-tag">{targetObj.category}</span>
-              <h1 className="target-word-title">{targetObj.word}</h1>
             </div>
+            
+            <span className="target-emoji floating-anim">{targetObj.emoji}</span>
 
-            <button className="btn-speaker demo-audio-btn" onClick={playTargetAudioPrompt}>
+            <button 
+              className="btn-speaker sound-hint-btn" 
+              onClick={handleHearSound}
+              title="Hear Pronunciation"
+            >
               <Volume2 className="icon-md" />
               <span>Hear Sound</span>
             </button>
           </div>
 
+          {/* Microphone Core Stage */}
           <div className="interaction-core-stage">
-            {/* Microphone Button */}
             <div className="mic-action-area">
-              <button
+              <button 
                 className={`mic-button ${isListening ? 'listening-pulse' : ''} ${isSuccess ? 'success-gold' : ''}`}
                 onClick={handleListenClick}
                 aria-label="Microphone"
               >
-                {isListening ? (
-                  <Radio className="icon-xl spin-anim" />
-                ) : isSuccess ? (
-                  <CheckCircle className="icon-xl" />
+                {isSuccess ? (
+                  <CheckCircle className="icon-xl text-green" />
                 ) : (
                   <Mic className="icon-xl" />
                 )}
               </button>
 
+              {/* Pulsing Waveform Bars */}
               {isListening && (
                 <div className="waveform-visualizer">
                   <div className="bar bar1"></div>
@@ -225,18 +203,19 @@ export function SayAndPlay({ onAwardStar }) {
               )}
             </div>
 
-            {/* Status & Feedback */}
+            {/* Audio Feedback Status Box */}
             <div className="voice-status-box">
-              <p className="status-text">{statusMessage}</p>
+              <p className={`status-text ${isSuccess ? 'text-green' : ''}`}>
+                {statusMessage}
+              </p>
               {transcript && (
                 <div className="transcript-chip">
-                  <span className="chip-label">Heard:</span>
-                  <strong className="chip-value">"{transcript}"</strong>
+                  <span>Speech Detected: <strong>"{transcript}"</strong></span>
                 </div>
               )}
             </div>
 
-            {/* Stage Quick Controls */}
+            {/* Quick Word Nav */}
             <div className="stage-controls-row">
               <div className="quick-word-nav">
                 <button className="btn-secondary" onClick={prevWord}>
@@ -246,13 +225,6 @@ export function SayAndPlay({ onAwardStar }) {
                 <button className="btn-primary" onClick={nextWord}>
                   <span>Next Word</span>
                   <ArrowRight className="icon-sm" />
-                </button>
-              </div>
-
-              <div className="simulator-box compact-sim">
-                <span className="sim-title">Voice Simulator:</span>
-                <button className="btn-secondary sim-btn" onClick={() => simulateVoiceInput(true)}>
-                  <span>✨ Test Voice ("{targetObj.word}")</span>
                 </button>
               </div>
             </div>
@@ -282,12 +254,11 @@ export function SayAndPlay({ onAwardStar }) {
 
           <div className="word-cards-vertical-grid">
             {filteredWords.map((item, idx) => {
-              const isCurrent = idx === wordIndex;
-
+              const isSelected = wordIndex === idx;
               return (
                 <button
                   key={item.id}
-                  className={`word-select-card ${isCurrent ? 'selected-card' : ''}`}
+                  className={`word-select-card ${isSelected ? 'selected-card' : ''}`}
                   onClick={() => handleSelectWord(idx, item)}
                 >
                   <span className="card-emoji">{item.emoji}</span>
@@ -295,7 +266,7 @@ export function SayAndPlay({ onAwardStar }) {
                     <span className="card-word">{item.word}</span>
                     <span className="card-cat">{item.category}</span>
                   </div>
-                  {isCurrent && <span className="active-star-badge">⭐</span>}
+                  {isSelected && <span className="active-star-badge">⭐</span>}
                 </button>
               );
             })}
