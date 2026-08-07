@@ -295,6 +295,95 @@ button {
   flex-wrap: wrap;
 }
 
+/* Mobile Navigation & Screen Optimizations */
+.mobile-menu-toggle-btn {
+  display: none;
+}
+
+.mobile-nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  z-index: 9999;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-nav-tab {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mobile-nav-tab.active {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    margin: 8px 8px 4px 8px;
+    padding: 8px 14px;
+    position: relative;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .brand-tagline {
+    display: none !important;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle-btn {
+    display: flex !important;
+  }
+
+  /* Hide subtitle descriptions on mobile so content sits at top */
+  .mode-header p,
+  .title-area p,
+  .mode-header .mode-subtitle {
+    display: none !important;
+  }
+
+  .mode-header {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .mode-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .mode-container {
+    padding: 6px;
+    gap: 8px;
+  }
+
+  .spotlight-card, .left-interaction-box, .right-words-panel, .sentence-stage, .spelling-stage {
+    padding: 14px;
+  }
+}
+
 .nav-tab {
   padding: 10px 18px;
   border-radius: 16px;

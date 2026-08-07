@@ -1,8 +1,10 @@
-import React from 'react';
-import { Volume2, Award, Settings, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Volume2, Award, Settings, Sparkles, Menu, X } from 'lucide-react';
 import { audioEngine } from '../utils/audioEngine';
 
 export function NavigationHeader({ currentMode, setMode, starsCount, openStickers, openSettings }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const modes = [
     { id: 'phonics', label: 'Alphabet', icon: '🔤', prompt: 'Alphabet Phonics Jungle! Learn letter sounds.' },
     { id: 'voice', label: 'Say & Play', icon: '🎙️', prompt: 'Say and Play! Practice speaking words out loud.' },
@@ -17,7 +19,10 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
     audioEngine.playAudioEffect('click');
     audioEngine.speakText(mode.prompt, { rate: 0.85 });
     setMode(mode.id);
+    setIsMobileMenuOpen(false);
   };
+
+  const activeModeObj = modes.find(m => m.id === currentMode) || modes[0];
 
   return (
     <header className="app-header glass-panel">
@@ -29,7 +34,8 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
         </div>
       </div>
 
-      <nav className="header-nav">
+      {/* Desktop Navigation Tabs */}
+      <nav className="header-nav desktop-nav">
         {modes.map((m) => (
           <button
             key={m.id}
@@ -44,6 +50,16 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
       </nav>
 
       <div className="header-actions">
+        {/* Mobile Hamburger Toggle Button */}
+        <button 
+          className="icon-btn mobile-menu-toggle-btn"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
+          title="Toggle Navigation Menu"
+        >
+          {isMobileMenuOpen ? <X className="icon-md" /> : <Menu className="icon-md" />}
+        </button>
+
         <button 
           className="star-counter-btn badge-btn" 
           onClick={() => {
@@ -70,6 +86,22 @@ export function NavigationHeader({ currentMode, setMode, starsCount, openSticker
           <Settings className="icon-md" />
         </button>
       </div>
+
+      {/* Mobile Collapsible Dropdown Menu */}
+      {isMobileMenuOpen && (
+        <nav className="mobile-nav-dropdown glass-panel pop-in-anim">
+          {modes.map((m) => (
+            <button
+              key={m.id}
+              className={`mobile-nav-tab ${currentMode === m.id ? 'active' : ''}`}
+              onClick={() => handleModeClick(m)}
+            >
+              <span className="tab-icon">{m.icon}</span>
+              <span className="tab-label">{m.label}</span>
+            </button>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
