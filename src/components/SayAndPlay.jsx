@@ -126,9 +126,11 @@ export function SayAndPlay({ onAwardStar }) {
     audioEngine.speakText(`Good try! Say it into the mic again!`, { rate: 0.8 });
   };
 
-  const handleHearSound = () => {
+  // Spells the word out and stops there: saying it would be the answer, since
+  // pronouncing it is the child's job on this page.
+  const handleHearLetters = () => {
     audioEngine.playAudioEffect('click');
-    audioEngine.speakText(`${targetObj.word}! ${targetObj.prompt}`, { rate: 0.85 });
+    audioEngine.speakText(`${targetObj.letters.join(' . ')} . Now say the word!`, { rate: 0.75 });
   };
 
   const nextWord = () => {
@@ -165,13 +167,13 @@ export function SayAndPlay({ onAwardStar }) {
               <span className="word-category-tag">{targetObj.category}</span>
             </div>
             
-            <button 
-              className="btn-speaker sound-hint-btn" 
-              onClick={handleHearSound}
-              title="Hear Pronunciation"
+            <button
+              className="btn-speaker sound-hint-btn"
+              onClick={handleHearLetters}
+              title="Hear the letters"
             >
               <Volume2 className="icon-sm" />
-              <span>Hear Sound</span>
+              <span>Hear Letters</span>
             </button>
           </div>
 
