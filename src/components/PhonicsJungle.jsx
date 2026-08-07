@@ -4,10 +4,9 @@ import { ALPHABET_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
 
 export function PhonicsJungle({ onAwardStar }) {
-  const getRandomLetter = () => ALPHABET_DATA[Math.floor(Math.random() * ALPHABET_DATA.length)];
-  const [selectedLetter, setSelectedLetter] = useState(getRandomLetter);
+  const [selectedLetter, setSelectedLetter] = useState(ALPHABET_DATA[0]);
   const [filter, setFilter] = useState('all');
-  const [learnedLetters, setLearnedLetters] = useState(new Set([selectedLetter.letter]));
+  const [learnedLetters, setLearnedLetters] = useState(new Set(['A']));
 
   const vowels = ['A', 'E', 'I', 'O', 'U'];
 
@@ -20,7 +19,7 @@ export function PhonicsJungle({ onAwardStar }) {
   const handleLetterClick = (item) => {
     setSelectedLetter(item);
     audioEngine.playAudioEffect('pop');
-    audioEngine.speakPhonics(item.letter, item.sound, item.word);
+    audioEngine.speakPhonics(item.letter, item.spokenSound, item.word);
 
     if (!learnedLetters.has(item.letter)) {
       const nextLearned = new Set(learnedLetters);
@@ -82,8 +81,8 @@ export function PhonicsJungle({ onAwardStar }) {
             </div>
 
             <div className="sound-description">
-              <h3>"{selectedLetter.letter}" says <span className="sound-highlight">"{selectedLetter.sound}"</span></h3>
-              <p className="word-cue">like <strong style={{ color: selectedLetter.color }}>{selectedLetter.word}</strong></p>
+              <h3>"{selectedLetter.letter}" is for <span className="sound-highlight">{selectedLetter.word}</span></h3>
+              <p className="word-cue">Phonics Sound: <strong style={{ color: selectedLetter.color }}>{selectedLetter.phoneticText}</strong></p>
             </div>
 
             <div className="spotlight-actions">
@@ -131,7 +130,7 @@ export function PhonicsJungle({ onAwardStar }) {
                 <span className="card-letter">{item.letter}</span>
                 <span className="card-lower">{item.lower}</span>
                 <span className="card-emoji">{item.emoji}</span>
-                <span className="card-sound">{item.sound}</span>
+                <span className="card-sound">{item.word}</span>
               </button>
             );
           })}

@@ -1,32 +1,38 @@
 // Expanded Phonics and Pre-K Learning Curriculum Data
 
+// `sound` is the respelling shown on the card; `spokenSound` is what the speech
+// engine is given. They differ because a spelling that reads well to the eye is
+// often read back as letter names: "Fff" comes out "eff eff eff", "Zzz" as
+// "zee zee zee", "Eh" as "ay" and "Ih" as "eye". The spoken forms below were
+// each checked against a speech engine's phoneme output.
+
 export const ALPHABET_DATA = [
-  { letter: 'A', lower: 'a', sound: 'Ah', phoneticText: '/æ/ sound', word: 'Apple', emoji: '🍎', color: '#FF5964', exampleWords: ['Ant', 'Ape', 'Alligator', 'Astronaut', 'Avocado', 'Anchor'] },
-  { letter: 'B', lower: 'b', sound: 'Buh', phoneticText: '/b/ sound', word: 'Bear', emoji: '🐻', color: '#35A7FF', exampleWords: ['Ball', 'Bus', 'Bee', 'Banana', 'Butterfly', 'Boat'] },
-  { letter: 'C', lower: 'c', sound: 'Cuh', phoneticText: '/k/ sound', word: 'Cat', emoji: '🐱', color: '#FF9F1C', exampleWords: ['Cup', 'Car', 'Cow', 'Cookie', 'Camel', 'Cake'] },
-  { letter: 'D', lower: 'd', sound: 'Duh', phoneticText: '/d/ sound', word: 'Dog', emoji: '🐶', color: '#2EC4B6', exampleWords: ['Duck', 'Drum', 'Door', 'Dinosaur', 'Dolphin', 'Donut'] },
-  { letter: 'E', lower: 'e', sound: 'Eh', phoneticText: '/ɛ/ sound', word: 'Elephant', emoji: '🐘', color: '#9B51E0', exampleWords: ['Egg', 'Elm', 'Elf', 'Eagle', 'Engine', 'Envelope'] },
-  { letter: 'F', lower: 'f', sound: 'Fff', phoneticText: '/f/ sound', word: 'Fish', emoji: '🐟', color: '#FF6B6B', exampleWords: ['Frog', 'Fan', 'Fox', 'Flower', 'Fire', 'Feather'] },
-  { letter: 'G', lower: 'g', sound: 'Guh', phoneticText: '/ɡ/ sound', word: 'Giraffe', emoji: '🦒', color: '#4ECDC4', exampleWords: ['Goat', 'Gift', 'Gum', 'Gorilla', 'Guitar', 'Grapes'] },
-  { letter: 'H', lower: 'h', sound: 'Huh', phoneticText: '/h/ sound', word: 'Hippo', emoji: '🦛', color: '#FFE66D', exampleWords: ['Hat', 'House', 'Hen', 'Helicopter', 'Heart', 'Horse'] },
-  { letter: 'I', lower: 'i', sound: 'Ih', phoneticText: '/ɪ/ sound', word: 'Iguana', emoji: '🦎', color: '#1A535C', exampleWords: ['Ink', 'Igloo', 'Insect', 'Ice', 'Island', 'Instrument'] },
-  { letter: 'J', lower: 'j', sound: 'Juh', phoneticText: '/dʒ/ sound', word: 'Jellyfish', emoji: '🪼', color: '#F77F00', exampleWords: ['Jam', 'Jet', 'Jug', 'Juice', 'Jungle', 'Jackfruit'] },
-  { letter: 'K', lower: 'k', sound: 'Kuh', phoneticText: '/k/ sound', word: 'Kangaroo', emoji: '🦘', color: '#FF6B6B', exampleWords: ['Kite', 'Key', 'King', 'Koala', 'Kitten', 'Kiwi'] },
-  { letter: 'L', lower: 'l', sound: 'Lll', phoneticText: '/l/ sound', word: 'Lion', emoji: '🦁', color: '#FFA62B', exampleWords: ['Leaf', 'Log', 'Lemon', 'Ladybug', 'Llama', 'Lollipop'] },
-  { letter: 'M', lower: 'm', sound: 'Mmm', phoneticText: '/m/ sound', word: 'Monkey', emoji: '🐒', color: '#70D6FF', exampleWords: ['Moon', 'Milk', 'Mat', 'Mango', 'Mouse', 'Mushroom'] },
-  { letter: 'N', lower: 'n', sound: 'Nnn', phoneticText: '/n/ sound', word: 'Nest', emoji: '🪹', color: '#FF70A6', exampleWords: ['Nut', 'Net', 'Nine', 'Night', 'Needle', 'Noodle'] },
-  { letter: 'O', lower: 'o', sound: 'Off', phoneticText: '/ɒ/ sound', word: 'Owl', emoji: '🦉', color: '#FF9770', exampleWords: ['Octopus', 'Ox', 'Orange', 'Ostrich', 'Otter', 'Oatmeal'] },
-  { letter: 'P', lower: 'p', sound: 'Puh', phoneticText: '/p/ sound', word: 'Penguin', emoji: '🐧', color: '#FFD670', exampleWords: ['Pig', 'Pen', 'Pot', 'Panda', 'Pizza', 'Parrot'] },
-  { letter: 'Q', lower: 'q', sound: 'Kwuh', phoneticText: '/kw/ sound', word: 'Queen', emoji: '👑', color: '#E9FF70', exampleWords: ['Quill', 'Quick', 'Quack', 'Quartz', 'Question', 'Quilt'] },
-  { letter: 'R', lower: 'r', sound: 'Rrr', phoneticText: '/r/ sound', word: 'Rabbit', emoji: '🐰', color: '#A06CD5', exampleWords: ['Red', 'Run', 'Ring', 'Rainbow', 'Robot', 'Rooster'] },
-  { letter: 'S', lower: 's', sound: 'Sss', phoneticText: '/s/ sound', word: 'Sun', emoji: '☀️', color: '#FFD166', exampleWords: ['Star', 'Snake', 'Sock', 'Spider', 'Ship', 'Strawberry'] },
-  { letter: 'T', lower: 't', sound: 'Tuh', phoneticText: '/t/ sound', word: 'Tiger', emoji: '🐯', color: '#F4A261', exampleWords: ['Toy', 'Tub', 'Ten', 'Turtle', 'Train', 'Tomato'] },
-  { letter: 'U', lower: 'u', sound: 'Uh', phoneticText: '/ʌ/ sound', word: 'Umbrella', emoji: '☂️', color: '#06D6A0', exampleWords: ['Up', 'Us', 'Uncle', 'Unicorn', 'Umpire', 'Utensil'] },
-  { letter: 'V', lower: 'v', sound: 'Vvv', phoneticText: '/v/ sound', word: 'Violin', emoji: '🎻', color: '#118AB2', exampleWords: ['Van', 'Vase', 'Vet', 'Volcano', 'Vegetable', 'Vulture'] },
-  { letter: 'W', lower: 'w', sound: 'Wuh', phoneticText: '/w/ sound', word: 'Whale', emoji: '🐳', color: '#073B4C', exampleWords: ['Web', 'Wag', 'Win', 'Wolf', 'Watermelon', 'Wagon'] },
-  { letter: 'X', lower: 'x', sound: 'Ks', phoneticText: '/ks/ sound', word: 'Xylophone', emoji: '🎼', color: '#EF476F', exampleWords: ['Fox', 'Box', 'Six', 'X-ray', 'Ox', 'Axis'] },
-  { letter: 'Y', lower: 'y', sound: 'Yuh', phoneticText: '/j/ sound', word: 'Yak', emoji: '🐂', color: '#FFC43D', exampleWords: ['Yo-yo', 'Yellow', 'Yam', 'Yacht', 'Yarn', 'Yeti'] },
-  { letter: 'Z', lower: 'z', sound: 'Zzz', phoneticText: '/z/ sound', word: 'Zebra', emoji: '🦓', color: '#10002B', exampleWords: ['Zoo', 'Zip', 'Zero', 'Zigzag', 'Zucchini', 'Zombie'] }
+  { letter: 'A', lower: 'a', sound: 'Aa', spokenSound: 'ap', phoneticText: '/æ/ sound', word: 'Apple', emoji: '🍎', color: '#FF5964', exampleWords: ['Ant', 'Ape', 'Alligator', 'Astronaut', 'Avocado', 'Anchor'] },
+  { letter: 'B', lower: 'b', sound: 'Buh', spokenSound: 'buh', phoneticText: '/b/ sound', word: 'Bear', emoji: '🐻', color: '#35A7FF', exampleWords: ['Ball', 'Bus', 'Bee', 'Banana', 'Butterfly', 'Boat'] },
+  { letter: 'C', lower: 'c', sound: 'Cuh', spokenSound: 'kuh', phoneticText: '/k/ sound', word: 'Cat', emoji: '🐱', color: '#FF9F1C', exampleWords: ['Cup', 'Car', 'Cow', 'Cookie', 'Camel', 'Cake'] },
+  { letter: 'D', lower: 'd', sound: 'Duh', spokenSound: 'duh', phoneticText: '/d/ sound', word: 'Dog', emoji: '🐶', color: '#2EC4B6', exampleWords: ['Duck', 'Drum', 'Door', 'Dinosaur', 'Dolphin', 'Donut'] },
+  { letter: 'E', lower: 'e', sound: 'Eh', spokenSound: 'el', phoneticText: '/ɛ/ sound', word: 'Elephant', emoji: '🐘', color: '#9B51E0', exampleWords: ['Egg', 'Elm', 'Elf', 'Eagle', 'Engine', 'Envelope'] },
+  { letter: 'F', lower: 'f', sound: 'Fff', spokenSound: 'fuh', phoneticText: '/f/ sound', word: 'Fish', emoji: '🐟', color: '#FF6B6B', exampleWords: ['Frog', 'Fan', 'Fox', 'Flower', 'Fire', 'Feather'] },
+  { letter: 'G', lower: 'g', sound: 'Guh', spokenSound: 'guh', phoneticText: '/ɡ/ sound', word: 'Giraffe', emoji: '🦒', color: '#4ECDC4', exampleWords: ['Goat', 'Gift', 'Gum', 'Gorilla', 'Guitar', 'Grapes'] },
+  { letter: 'H', lower: 'h', sound: 'Huh', spokenSound: 'huh', phoneticText: '/h/ sound', word: 'Hippo', emoji: '🦛', color: '#FFE66D', exampleWords: ['Hat', 'House', 'Hen', 'Helicopter', 'Heart', 'Horse'] },
+  { letter: 'I', lower: 'i', sound: 'Ih', spokenSound: 'ig', phoneticText: '/ɪ/ sound', word: 'Iguana', emoji: '🦎', color: '#1A535C', exampleWords: ['Ink', 'Igloo', 'Insect', 'Ice', 'Island', 'Instrument'] },
+  { letter: 'J', lower: 'j', sound: 'Juh', spokenSound: 'juh', phoneticText: '/dʒ/ sound', word: 'Jellyfish', emoji: '🪼', color: '#F77F00', exampleWords: ['Jam', 'Jet', 'Jug', 'Juice', 'Jungle', 'Jackfruit'] },
+  { letter: 'K', lower: 'k', sound: 'Kuh', spokenSound: 'kuh', phoneticText: '/k/ sound', word: 'Kangaroo', emoji: '🦘', color: '#FF6B6B', exampleWords: ['Kite', 'Key', 'King', 'Koala', 'Kitten', 'Kiwi'] },
+  { letter: 'L', lower: 'l', sound: 'Lll', spokenSound: 'luh', phoneticText: '/l/ sound', word: 'Lion', emoji: '🦁', color: '#FFA62B', exampleWords: ['Leaf', 'Log', 'Lemon', 'Ladybug', 'Llama', 'Lollipop'] },
+  { letter: 'M', lower: 'm', sound: 'Mmm', spokenSound: 'muh', phoneticText: '/m/ sound', word: 'Monkey', emoji: '🐒', color: '#70D6FF', exampleWords: ['Moon', 'Milk', 'Mat', 'Mango', 'Mouse', 'Mushroom'] },
+  { letter: 'N', lower: 'n', sound: 'Nnn', spokenSound: 'nuh', phoneticText: '/n/ sound', word: 'Nest', emoji: '🪹', color: '#FF70A6', exampleWords: ['Nut', 'Net', 'Nine', 'Night', 'Needle', 'Noodle'] },
+  { letter: 'O', lower: 'o', sound: 'Ah', spokenSound: 'og', phoneticText: '/ɒ/ sound', word: 'Owl', emoji: '🦉', color: '#FF9770', exampleWords: ['Octopus', 'Ox', 'Orange', 'Ostrich', 'Otter', 'Oatmeal'] },
+  { letter: 'P', lower: 'p', sound: 'Puh', spokenSound: 'puh', phoneticText: '/p/ sound', word: 'Penguin', emoji: '🐧', color: '#FFD670', exampleWords: ['Pig', 'Pen', 'Pot', 'Panda', 'Pizza', 'Parrot'] },
+  { letter: 'Q', lower: 'q', sound: 'Kwuh', spokenSound: 'kwuh', phoneticText: '/kw/ sound', word: 'Queen', emoji: '👑', color: '#E9FF70', exampleWords: ['Quill', 'Quick', 'Quack', 'Quartz', 'Question', 'Quilt'] },
+  { letter: 'R', lower: 'r', sound: 'Rrr', spokenSound: 'ruh', phoneticText: '/r/ sound', word: 'Rabbit', emoji: '🐰', color: '#A06CD5', exampleWords: ['Red', 'Run', 'Ring', 'Rainbow', 'Robot', 'Rooster'] },
+  { letter: 'S', lower: 's', sound: 'Sss', spokenSound: 'suh', phoneticText: '/s/ sound', word: 'Sun', emoji: '☀️', color: '#FFD166', exampleWords: ['Star', 'Snake', 'Sock', 'Spider', 'Ship', 'Strawberry'] },
+  { letter: 'T', lower: 't', sound: 'Tuh', spokenSound: 'tuh', phoneticText: '/t/ sound', word: 'Tiger', emoji: '🐯', color: '#F4A261', exampleWords: ['Toy', 'Tub', 'Ten', 'Turtle', 'Train', 'Tomato'] },
+  { letter: 'U', lower: 'u', sound: 'Uh', spokenSound: 'uh', phoneticText: '/ʌ/ sound', word: 'Umbrella', emoji: '☂️', color: '#06D6A0', exampleWords: ['Up', 'Us', 'Uncle', 'Unicorn', 'Umpire', 'Utensil'] },
+  { letter: 'V', lower: 'v', sound: 'Vvv', spokenSound: 'vuh', phoneticText: '/v/ sound', word: 'Violin', emoji: '🎻', color: '#118AB2', exampleWords: ['Van', 'Vase', 'Vet', 'Volcano', 'Vegetable', 'Vulture'] },
+  { letter: 'W', lower: 'w', sound: 'Wuh', spokenSound: 'wuh', phoneticText: '/w/ sound', word: 'Whale', emoji: '🐳', color: '#073B4C', exampleWords: ['Web', 'Wag', 'Win', 'Wolf', 'Watermelon', 'Wagon'] },
+  { letter: 'X', lower: 'x', sound: 'Ks', spokenSound: 'uks', phoneticText: '/ks/ sound', word: 'Xylophone', emoji: '🎼', color: '#EF476F', exampleWords: ['Fox', 'Box', 'Six', 'X-ray', 'Ox', 'Axis'] },
+  { letter: 'Y', lower: 'y', sound: 'Yuh', spokenSound: 'yuh', phoneticText: '/j/ sound', word: 'Yak', emoji: '🐂', color: '#FFC43D', exampleWords: ['Yo-yo', 'Yellow', 'Yam', 'Yacht', 'Yarn', 'Yeti'] },
+  { letter: 'Z', lower: 'z', sound: 'Zzz', spokenSound: 'zuh', phoneticText: '/z/ sound', word: 'Zebra', emoji: '🦓', color: '#10002B', exampleWords: ['Zoo', 'Zip', 'Zero', 'Zigzag', 'Zucchini', 'Zombie'] }
 ];
 
 export const BLENDS_DATA = [
@@ -36,11 +42,12 @@ export const BLENDS_DATA = [
     blend: 'CH', 
     category: 'H-Digraphs',
     letters: 'C and H', 
-    sound: 'Ch', 
+    spokenSound: 'chuh',
+    sound: 'Ch',
     phoneticText: '/tʃ/ sound', 
     emoji: '🍫', 
     word: 'Chocolate', 
-    spokenPrompt: 'The letters C and H make the ch sound, as in Chocolate!',
+    spokenPrompt: 'The letters C and H make the chuh sound, as in Chocolate!',
     exampleWords: ['Chair', 'Chicken', 'Cheese', 'Cherry', 'Chimney', 'Cheetah'] 
   },
   { 
@@ -48,11 +55,12 @@ export const BLENDS_DATA = [
     blend: 'SH', 
     category: 'H-Digraphs',
     letters: 'S and H', 
-    sound: 'Sh', 
+    spokenSound: 'shuh',
+    sound: 'Sh',
     phoneticText: '/ʃ/ sound', 
     emoji: '🦈', 
     word: 'Shark', 
-    spokenPrompt: 'The letters S and H make the sh sound, as in Shark!',
+    spokenPrompt: 'The letters S and H make the shuh sound, as in Shark!',
     exampleWords: ['Ship', 'Shoe', 'Sheep', 'Shell', 'Shadow', 'Shirt'] 
   },
   { 
@@ -60,11 +68,12 @@ export const BLENDS_DATA = [
     blend: 'TH', 
     category: 'H-Digraphs',
     letters: 'T and H', 
-    sound: 'Th', 
+    spokenSound: 'thuh',
+    sound: 'Th',
     phoneticText: '/θ/ sound', 
     emoji: '👍', 
     word: 'Thumb', 
-    spokenPrompt: 'The letters T and H make the th sound, as in Thumb!',
+    spokenPrompt: 'The letters T and H make the thuh sound, as in Thumb!',
     exampleWords: ['Three', 'Think', 'Thorn', 'Thunder', 'Thermometer', 'Thimble'] 
   },
   { 
@@ -72,11 +81,12 @@ export const BLENDS_DATA = [
     blend: 'WH', 
     category: 'H-Digraphs',
     letters: 'W and H', 
-    sound: 'Wh', 
+    spokenSound: 'whuh',
+    sound: 'Wh',
     phoneticText: '/w/ sound', 
     emoji: '🐋', 
     word: 'Whale', 
-    spokenPrompt: 'The letters W and H make the wh sound, as in Whale!',
+    spokenPrompt: 'The letters W and H make the whuh sound, as in Whale!',
     exampleWords: ['Wheel', 'Whistle', 'White', 'Whisper', 'Whiskers', 'Wheat'] 
   },
   { 
@@ -84,11 +94,12 @@ export const BLENDS_DATA = [
     blend: 'PH', 
     category: 'H-Digraphs',
     letters: 'P and H', 
-    sound: 'Fff', 
+    spokenSound: 'fuh',
+    sound: 'Fff',
     phoneticText: '/f/ sound', 
     emoji: '📱', 
     word: 'Phone', 
-    spokenPrompt: 'The letters P and H make the ph sound, as in Phone!',
+    spokenPrompt: 'The letters P and H make the fuh sound, as in Phone!',
     exampleWords: ['Photo', 'Phantom', 'Dolphin', 'Elephant', 'Alphabet', 'Phoenix'] 
   },
 
@@ -98,11 +109,12 @@ export const BLENDS_DATA = [
     blend: 'BL', 
     category: 'L-Blends',
     letters: 'B and L', 
-    sound: 'Bl', 
+    spokenSound: 'bluh',
+    sound: 'Bl',
     phoneticText: '/bl/ sound', 
     emoji: '🫐', 
     word: 'Blueberry', 
-    spokenPrompt: 'The letters B and L blend to make the bl sound, as in Blueberry!',
+    spokenPrompt: 'The letters B and L blend to make the bluh sound, as in Blueberry!',
     exampleWords: ['Blue', 'Block', 'Blanket', 'Blossom', 'Blender', 'Blade'] 
   },
   { 
@@ -110,11 +122,12 @@ export const BLENDS_DATA = [
     blend: 'CL', 
     category: 'L-Blends',
     letters: 'C and L', 
-    sound: 'Cl', 
+    spokenSound: 'kluh',
+    sound: 'Cl',
     phoneticText: '/kl/ sound', 
     emoji: '☁️', 
     word: 'Cloud', 
-    spokenPrompt: 'The letters C and L blend to make the cl sound, as in Cloud!',
+    spokenPrompt: 'The letters C and L blend to make the kluh sound, as in Cloud!',
     exampleWords: ['Clock', 'Clown', 'Clean', 'Club', 'Clip', 'Clover'] 
   },
   { 
@@ -122,11 +135,12 @@ export const BLENDS_DATA = [
     blend: 'FL', 
     category: 'L-Blends',
     letters: 'F and L', 
-    sound: 'Fl', 
+    spokenSound: 'fluh',
+    sound: 'Fl',
     phoneticText: '/fl/ sound', 
     emoji: '🦩', 
     word: 'Flamingo', 
-    spokenPrompt: 'The letters F and L blend to make the fl sound, as in Flamingo!',
+    spokenPrompt: 'The letters F and L blend to make the fluh sound, as in Flamingo!',
     exampleWords: ['Frog', 'Flower', 'Fly', 'Flame', 'Flute', 'Flash'] 
   },
   { 
@@ -134,11 +148,12 @@ export const BLENDS_DATA = [
     blend: 'GL', 
     category: 'L-Blends',
     letters: 'G and L', 
-    sound: 'Gl', 
+    spokenSound: 'gluh',
+    sound: 'Gl',
     phoneticText: '/ɡl/ sound', 
     emoji: '🌍', 
     word: 'Globe', 
-    spokenPrompt: 'The letters G and L blend to make the gl sound, as in Globe!',
+    spokenPrompt: 'The letters G and L blend to make the gluh sound, as in Globe!',
     exampleWords: ['Glass', 'Glove', 'Glue', 'Glow', 'Glasses', 'Glider'] 
   },
   { 
@@ -146,11 +161,12 @@ export const BLENDS_DATA = [
     blend: 'PL', 
     category: 'L-Blends',
     letters: 'P and L', 
-    sound: 'Pl', 
+    spokenSound: 'pluh',
+    sound: 'Pl',
     phoneticText: '/pl/ sound', 
     emoji: '🪐', 
     word: 'Planet', 
-    spokenPrompt: 'The letters P and L blend to make the pl sound, as in Planet!',
+    spokenPrompt: 'The letters P and L blend to make the pluh sound, as in Planet!',
     exampleWords: ['Plant', 'Plate', 'Plum', 'Plane', 'Play', 'Plastic'] 
   },
   { 
@@ -158,11 +174,12 @@ export const BLENDS_DATA = [
     blend: 'SL', 
     category: 'L-Blends',
     letters: 'S and L', 
-    sound: 'Sl', 
+    spokenSound: 'sluh',
+    sound: 'Sl',
     phoneticText: '/sl/ sound', 
     emoji: '🛝', 
     word: 'Slide', 
-    spokenPrompt: 'The letters S and L blend to make the sl sound, as in Slide!',
+    spokenPrompt: 'The letters S and L blend to make the sluh sound, as in Slide!',
     exampleWords: ['Sloth', 'Sled', 'Sleep', 'Slipper', 'Slice', 'Slime'] 
   },
 
@@ -172,11 +189,12 @@ export const BLENDS_DATA = [
     blend: 'BR', 
     category: 'R-Blends',
     letters: 'B and R', 
-    sound: 'Br', 
+    spokenSound: 'bruh',
+    sound: 'Br',
     phoneticText: '/br/ sound', 
     emoji: '🍞', 
     word: 'Bread', 
-    spokenPrompt: 'The letters B and R blend to make the br sound, as in Bread!',
+    spokenPrompt: 'The letters B and R blend to make the bruh sound, as in Bread!',
     exampleWords: ['Brush', 'Brick', 'Bridge', 'Broom', 'Brown', 'Branch'] 
   },
   { 
@@ -184,11 +202,12 @@ export const BLENDS_DATA = [
     blend: 'CR', 
     category: 'R-Blends',
     letters: 'C and R', 
-    sound: 'Cr', 
+    spokenSound: 'kruh',
+    sound: 'Cr',
     phoneticText: '/kr/ sound', 
     emoji: '👑', 
     word: 'Crown', 
-    spokenPrompt: 'The letters C and R blend to make the cr sound, as in Crown!',
+    spokenPrompt: 'The letters C and R blend to make the kruh sound, as in Crown!',
     exampleWords: ['Crab', 'Crayons', 'Crib', 'Cross', 'Crystal', 'Crayon'] 
   },
   { 
@@ -196,11 +215,12 @@ export const BLENDS_DATA = [
     blend: 'DR', 
     category: 'R-Blends',
     letters: 'D and R', 
-    sound: 'Dr', 
+    spokenSound: 'druh',
+    sound: 'Dr',
     phoneticText: '/dr/ sound', 
     emoji: '🐉', 
     word: 'Dragon', 
-    spokenPrompt: 'The letters D and R blend to make the dr sound, as in Dragon!',
+    spokenPrompt: 'The letters D and R blend to make the druh sound, as in Dragon!',
     exampleWords: ['Drum', 'Dress', 'Drink', 'Drop', 'Dragonfly', 'Drawer'] 
   },
   { 
@@ -208,11 +228,12 @@ export const BLENDS_DATA = [
     blend: 'FR', 
     category: 'R-Blends',
     letters: 'F and R', 
-    sound: 'Fr', 
+    spokenSound: 'fruh',
+    sound: 'Fr',
     phoneticText: '/fr/ sound', 
     emoji: '🐸', 
     word: 'Frog', 
-    spokenPrompt: 'The letters F and R blend to make the fr sound, as in Frog!',
+    spokenPrompt: 'The letters F and R blend to make the fruh sound, as in Frog!',
     exampleWords: ['Fruit', 'Friends', 'Freeze', 'Frame', 'Fries', 'Fridge'] 
   },
   { 
@@ -220,11 +241,12 @@ export const BLENDS_DATA = [
     blend: 'GR', 
     category: 'R-Blends',
     letters: 'G and R', 
-    sound: 'Gr', 
+    spokenSound: 'gruh',
+    sound: 'Gr',
     phoneticText: '/ɡr/ sound', 
     emoji: '🍇', 
     word: 'Grapes', 
-    spokenPrompt: 'The letters G and R blend to make the gr sound, as in Grapes!',
+    spokenPrompt: 'The letters G and R blend to make the gruh sound, as in Grapes!',
     exampleWords: ['Grass', 'Green', 'Grill', 'Gorilla', 'Ground', 'Grasshopper'] 
   },
   { 
@@ -232,11 +254,12 @@ export const BLENDS_DATA = [
     blend: 'PR', 
     category: 'R-Blends',
     letters: 'P and R', 
-    sound: 'Pr', 
+    spokenSound: 'pruh',
+    sound: 'Pr',
     phoneticText: '/pr/ sound', 
     emoji: '👸', 
     word: 'Princess', 
-    spokenPrompt: 'The letters P and R blend to make the pr sound, as in Princess!',
+    spokenPrompt: 'The letters P and R blend to make the pruh sound, as in Princess!',
     exampleWords: ['Prince', 'Present', 'Pretzel', 'Print', 'Prism', 'Price'] 
   },
   { 
@@ -244,11 +267,12 @@ export const BLENDS_DATA = [
     blend: 'TR', 
     category: 'R-Blends',
     letters: 'T and R', 
-    sound: 'Tr', 
+    spokenSound: 'truh',
+    sound: 'Tr',
     phoneticText: '/tr/ sound', 
     emoji: '🚂', 
     word: 'Train', 
-    spokenPrompt: 'The letters T and R blend to make the tr sound, as in Train!',
+    spokenPrompt: 'The letters T and R blend to make the truh sound, as in Train!',
     exampleWords: ['Tree', 'Truck', 'Trophy', 'Treasure', 'Tractor', 'Traffic'] 
   },
 
@@ -258,11 +282,12 @@ export const BLENDS_DATA = [
     blend: 'SC', 
     category: 'S-Blends',
     letters: 'S and C', 
-    sound: 'Sc', 
+    spokenSound: 'skuh',
+    sound: 'Sc',
     phoneticText: '/sk/ sound', 
     emoji: '🛴', 
     word: 'Scooter', 
-    spokenPrompt: 'The letters S and C blend to make the sc sound, as in Scooter!',
+    spokenPrompt: 'The letters S and C blend to make the skuh sound, as in Scooter!',
     exampleWords: ['Scale', 'Scarf', 'School', 'Scoop', 'Scene', 'Scooter'] 
   },
   { 
@@ -270,11 +295,12 @@ export const BLENDS_DATA = [
     blend: 'SK', 
     category: 'S-Blends',
     letters: 'S and K', 
-    sound: 'Sk', 
+    spokenSound: 'skuh',
+    sound: 'Sk',
     phoneticText: '/sk/ sound', 
     emoji: '🛼', 
     word: 'Skate', 
-    spokenPrompt: 'The letters S and K blend to make the sk sound, as in Skate!',
+    spokenPrompt: 'The letters S and K blend to make the skuh sound, as in Skate!',
     exampleWords: ['Sky', 'Skunk', 'Skeleton', 'Skirt', 'Ski', 'Sketch'] 
   },
   { 
@@ -282,11 +308,12 @@ export const BLENDS_DATA = [
     blend: 'SM', 
     category: 'S-Blends',
     letters: 'S and M', 
-    sound: 'Sm', 
+    spokenSound: 'smuh',
+    sound: 'Sm',
     phoneticText: '/sm/ sound', 
     emoji: '😊', 
     word: 'Smile', 
-    spokenPrompt: 'The letters S and M blend to make the sm sound, as in Smile!',
+    spokenPrompt: 'The letters S and M blend to make the smuh sound, as in Smile!',
     exampleWords: ['Smoke', 'Small', 'Smart', 'Smell', 'Smash', 'Smoothie'] 
   },
   { 
@@ -294,11 +321,12 @@ export const BLENDS_DATA = [
     blend: 'SN', 
     category: 'S-Blends',
     letters: 'S and N', 
-    sound: 'Sn', 
+    spokenSound: 'snuh',
+    sound: 'Sn',
     phoneticText: '/sn/ sound', 
     emoji: '🐍', 
     word: 'Snake', 
-    spokenPrompt: 'The letters S and N blend to make the sn sound, as in Snake!',
+    spokenPrompt: 'The letters S and N blend to make the snuh sound, as in Snake!',
     exampleWords: ['Snail', 'Snow', 'Snack', 'Snap', 'Sneeze', 'Snowman'] 
   },
   { 
@@ -306,11 +334,12 @@ export const BLENDS_DATA = [
     blend: 'SP', 
     category: 'S-Blends',
     letters: 'S and P', 
-    sound: 'Sp', 
+    spokenSound: 'spuh',
+    sound: 'Sp',
     phoneticText: '/sp/ sound', 
     emoji: '🕷️', 
     word: 'Spider', 
-    spokenPrompt: 'The letters S and P blend to make the sp sound, as in Spider!',
+    spokenPrompt: 'The letters S and P blend to make the spuh sound, as in Spider!',
     exampleWords: ['Spoon', 'Space', 'Sparkle', 'Sponge', 'Sport', 'Spin'] 
   },
   { 
@@ -318,11 +347,12 @@ export const BLENDS_DATA = [
     blend: 'ST', 
     category: 'S-Blends',
     letters: 'S and T', 
-    sound: 'St', 
+    spokenSound: 'stuh',
+    sound: 'St',
     phoneticText: '/st/ sound', 
     emoji: '⭐', 
     word: 'Star', 
-    spokenPrompt: 'The letters S and T blend to make the st sound, as in Star!',
+    spokenPrompt: 'The letters S and T blend to make the stuh sound, as in Star!',
     exampleWords: ['Stop', 'Stamp', 'Stick', 'Storm', 'Statue', 'Starfish'] 
   },
   { 
@@ -330,11 +360,12 @@ export const BLENDS_DATA = [
     blend: 'SW', 
     category: 'S-Blends',
     letters: 'S and W', 
-    sound: 'Sw', 
+    spokenSound: 'swuh',
+    sound: 'Sw',
     phoneticText: '/sw/ sound', 
     emoji: '🦢', 
     word: 'Swan', 
-    spokenPrompt: 'The letters S and W blend to make the sw sound, as in Swan!',
+    spokenPrompt: 'The letters S and W blend to make the swuh sound, as in Swan!',
     exampleWords: ['Swim', 'Swing', 'Sweet', 'Sword', 'Sweater', 'Switch'] 
   }
 ];

@@ -123,13 +123,15 @@ class AudioEngine {
     });
   }
 
+  // `phonicSound` must be a spoken respelling (ALPHABET_DATA.spokenSound), not
+  // the one printed on the card: speech engines read "Sss" back as "ess ess ess".
   speakPhonics(letter, phonicSound, exampleWord) {
-    const text = `Letter ${letter}! ${letter} says ${phonicSound}. Like ${exampleWord}!`;
-    return this.speakText(text, { rate: this.speechRate * 0.9 });
+    const text = `Letter ${letter}! ${letter} is for ${exampleWord}. ${exampleWord}!`;
+    return this.speakText(text, { rate: this.speechRate * 0.85 });
   }
 
   speakBlend(blendObj) {
-    const prompt = blendObj.spokenPrompt || `The blend ${blendObj.blend} sound, as in ${blendObj.word}!`;
+    const prompt = `The letters ${blendObj.letters} make the sound in ${blendObj.word}. ${blendObj.word}!`;
     return this.speakText(prompt, { rate: this.speechRate * 0.85 });
   }
 

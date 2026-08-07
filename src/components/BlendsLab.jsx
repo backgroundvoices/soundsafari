@@ -4,17 +4,16 @@ import { BLENDS_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
 
 export function BlendsLab({ onAwardStar }) {
-  const getRandomBlend = () => BLENDS_DATA[Math.floor(Math.random() * BLENDS_DATA.length)];
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedBlend, setSelectedBlend] = useState(getRandomBlend);
-  const [exploredBlends, setExploredBlends] = useState(new Set([selectedBlend.blend]));
+  const [selectedBlend, setSelectedBlend] = useState(BLENDS_DATA[0]);
+  const [exploredBlends, setExploredBlends] = useState(new Set(['CH']));
 
   const categories = ['All', 'H-Digraphs', 'L-Blends', 'R-Blends', 'S-Blends'];
 
   const filteredBlends = BLENDS_DATA.filter((item) => {
     if (selectedCategory === 'All') return true;
     return item.category === selectedCategory;
-  }).sort(() => Math.random() - 0.5);
+  });
 
   const handleBlendClick = (blendObj) => {
     setSelectedBlend(blendObj);
@@ -31,7 +30,7 @@ export function BlendsLab({ onAwardStar }) {
 
   const handleExampleClick = (word) => {
     audioEngine.playAudioEffect('click');
-    audioEngine.speakText(`${word}! Starts with the ${selectedBlend.blend} sound!`, { rate: 0.8 });
+    audioEngine.speakText(`${word}! Starts with ${selectedBlend.blend}!`, { rate: 0.8 });
   };
 
   return (
@@ -71,8 +70,8 @@ export function BlendsLab({ onAwardStar }) {
             </div>
 
             <div className="sound-description">
-              <h3>Letters {selectedBlend.letters} make the <span className="sound-highlight">"{selectedBlend.sound}"</span> sound</h3>
-              <p className="word-cue">like <strong style={{ color: '#c084fc' }}>{selectedBlend.word}</strong></p>
+              <h3>The "{selectedBlend.blend}" sound is in <span className="sound-highlight">{selectedBlend.word}</span></h3>
+              <p className="word-cue">Letters <strong>{selectedBlend.letters}</strong> • <strong style={{ color: '#c084fc' }}>{selectedBlend.phoneticText}</strong></p>
             </div>
 
             <button 
@@ -117,7 +116,7 @@ export function BlendsLab({ onAwardStar }) {
                 {isExplored && <span className="learned-badge">⭐</span>}
                 <span className="card-letter">{item.blend}</span>
                 <span className="card-emoji">{item.emoji}</span>
-                <span className="card-sound">{item.sound}</span>
+                <span className="card-sound">{item.word}</span>
               </button>
             );
           })}
