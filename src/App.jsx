@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { StartScreen } from './components/StartScreen';
 import { NavigationHeader } from './components/NavigationHeader';
 import { PhonicsJungle } from './components/PhonicsJungle';
 import { WordBakery } from './components/WordBakery';
@@ -12,7 +11,6 @@ import { SettingsModal } from './components/SettingsModal';
 import { audioEngine } from './utils/audioEngine';
 
 export default function App() {
-  const [started, setStarted] = useState(false);
   const [currentMode, setCurrentMode] = useState('phonics');
   const [starsCount, setStarsCount] = useState(() => {
     const saved = localStorage.getItem('pk_stars_count');
@@ -37,8 +35,6 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {!started && <StartScreen onStart={() => setStarted(true)} />}
-
       <NavigationHeader
         currentMode={currentMode}
         setMode={setCurrentMode}
