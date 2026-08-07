@@ -1,4 +1,12 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm ci",
+  "redirects": [
+    { "source": "/", "destination": "/littlevoices/soundsafari/", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -6,6 +14,12 @@
         {
           "type": "host",
           "value": "(.*)\\.vercel\\.app"
+        }
+      ],
+      "missing": [
+        {
+          "type": "query",
+          "key": "bgv-proxy"
         }
       ],
       "headers": [
@@ -17,8 +31,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/littlevoices/soundsafari/(.*)", "destination": "/littlevoices/soundsafari/index.html" },
-    { "source": "/littlevoices/soundsafari", "destination": "/littlevoices/soundsafari/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/littlevoices/soundsafari/:path*", "destination": "/littlevoices/soundsafari/index.html" }
   ]
 }
