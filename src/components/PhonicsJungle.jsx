@@ -1,25 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, Sparkles, Music, Star, Play, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Volume2, Sparkles, Star, Play, CheckCircle } from 'lucide-react';
 import { ALPHABET_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
 
 export function PhonicsJungle({ onAwardStar }) {
   const [selectedLetter, setSelectedLetter] = useState(ALPHABET_DATA[0]);
   const [filter, setFilter] = useState('all');
-  const [isPlayingSong, setIsPlayingSong] = useState(false);
   const [learnedLetters, setLearnedLetters] = useState(new Set(['A']));
 
-  const isCancelledRef = useRef(false);
-
   const vowels = ['A', 'E', 'I', 'O', 'U'];
-
-  useEffect(() => {
-    isCancelledRef.current = false;
-    return () => {
-      isCancelledRef.current = true;
-      audioEngine.stopSpeech();
-    };
-  }, []);
 
   const filteredAlphabet = ALPHABET_DATA.filter((item) => {
     if (filter === 'vowels') return vowels.includes(item.letter);
@@ -28,11 +17,6 @@ export function PhonicsJungle({ onAwardStar }) {
   });
 
   const handleLetterClick = (item) => {
-    if (isPlayingSong) {
-      isCancelledRef.current = true;
-      audioEngine.stopSpeech();
-      setIsPlayingSong(false);
-    }
     setSelectedLetter(item);
     audioEngine.playAudioEffect('pop');
     audioEngine.speakPhonics(item.letter, item.sound, item.word);
@@ -46,44 +30,8 @@ export function PhonicsJungle({ onAwardStar }) {
   };
 
   const handleExampleWordClick = (word) => {
-    if (isPlayingSong) {
-      isCancelledRef.current = true;
-      audioEngine.stopSpeech();
-      setIsPlayingSong(false);
-    }
     audioEngine.playAudioEffect('click');
     audioEngine.speakText(`${word}! Starts with ${selectedLetter.letter}!`, { rate: 0.8 });
-  };
-
-  const playPhonicsSong = async () => {
-    if (isPlayingSong) {
-      isCancelledRef.current = true;
-      audioEngine.stopSpeech();
-      setIsPlayingSong(false);
-      return;
-    }
-
-    isCancelledRef.current = false;
-    setIsPlayingSong(true);
-    audioEngine.playAudioEffect('star');
-    await audioEngine.speakText("Let's sing the Phonics Song together!", { rate: 0.8 });
-
-    for (let i = 0; i < ALPHABET_DATA.length; i++) {
-      if (isCancelledRef.current) break;
-      const item = ALPHABET_DATA[i];
-      setSelectedLetter(item);
-      audioEngine.playAudioEffect('pop');
-      await audioEngine.speakText(`${item.letter} says ${item.sound}! ${item.word}!`, { rate: 0.75 });
-    }
-
-    if (!isCancelledRef.current) {
-      setIsPlayingSong(false);
-      audioEngine.playAudioEffect('correct');
-      audioEngine.speakText("Fantastic job! You know your alphabet sounds!", { rate: 0.85 });
-      onAwardStar();
-    } else {
-      setIsPlayingSong(false);
-    }
   };
 
   return (
@@ -115,14 +63,6 @@ export function PhonicsJungle({ onAwardStar }) {
               Consonants
             </button>
           </div>
-
-          <button 
-            className={`btn-primary song-btn ${isPlayingSong ? 'playing' : ''}`}
-            onClick={playPhonicsSong}
-          >
-            <Music className="icon-md" />
-            <span>{isPlayingSong ? 'Stop Song' : 'Play Phonics Song'}</span>
-          </button>
         </div>
       </div>
 
