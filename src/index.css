@@ -865,14 +865,14 @@ button {
 /* SAY AND PLAY SPLIT LAYOUT: Left Interaction Stage + Right Words List */
 .say-play-split-layout {
   display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 16px;
+  grid-template-columns: 1fr 540px;
+  gap: 18px;
   align-items: stretch;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .say-play-split-layout {
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 460px;
   }
 }
 
@@ -1071,11 +1071,11 @@ button {
 
 .word-cards-vertical-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 10px;
   overflow-y: auto;
-  padding-right: 4px;
-  max-height: 360px;
+  padding-right: 6px;
+  max-height: 380px;
   scrollbar-width: thin;
 }
 
