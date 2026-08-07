@@ -340,56 +340,1206 @@ export const BLENDS_DATA = [
 ];
 
 export const CVC_WORDS = [
-  // Animals
-  { id: 'cat', word: 'CAT', letters: ['C', 'A', 'T'], emoji: '🐱', category: 'Animals', prompt: 'Can you spell CAT?' },
-  { id: 'dog', word: 'DOG', letters: ['D', 'O', 'G'], emoji: '🐶', category: 'Animals', prompt: 'Can you spell DOG?' },
-  { id: 'pig', word: 'PIG', letters: ['P', 'I', 'G'], emoji: '🐷', category: 'Animals', prompt: 'Can you spell PIG?' },
-  { id: 'fox', word: 'FOX', letters: ['F', 'O', 'X'], emoji: '🦊', category: 'Animals', prompt: 'Can you spell FOX?' },
-  { id: 'hen', word: 'HEN', letters: ['H', 'E', 'N'], emoji: '🐔', category: 'Animals', prompt: 'Can you spell HEN?' },
-  { id: 'cow', word: 'COW', letters: ['C', 'O', 'W'], emoji: '🐮', category: 'Animals', prompt: 'Can you spell COW?' },
-  { id: 'bat', word: 'BAT', letters: ['B', 'A', 'T'], emoji: '🦇', category: 'Animals', prompt: 'Can you spell BAT?' },
-  { id: 'cub', word: 'CUB', letters: ['C', 'U', 'B'], emoji: '🐻', category: 'Animals', prompt: 'Can you spell CUB?' },
-  { id: 'pup', word: 'PUP', letters: ['P', 'U', 'P'], emoji: '🐶', category: 'Animals', prompt: 'Can you spell PUP?' },
-  { id: 'bee', word: 'BEE', letters: ['B', 'E', 'E'], emoji: '🐝', category: 'Animals', prompt: 'Can you spell BEE?' },
-
-  // Around the House & Things
-  { id: 'bed', word: 'BED', letters: ['B', 'E', 'D'], emoji: '🛏️', category: 'Home', prompt: 'Can you spell BED?' },
-  { id: 'cup', word: 'CUP', letters: ['C', 'U', 'P'], emoji: '🥤', category: 'Things', prompt: 'Can you spell CUP?' },
-  { id: 'box', word: 'BOX', letters: ['B', 'O', 'X'], emoji: '📦', category: 'Things', prompt: 'Can you spell BOX?' },
-  { id: 'pen', word: 'PEN', letters: ['P', 'E', 'N'], emoji: '🖊️', category: 'School', prompt: 'Can you spell PEN?' },
-  { id: 'hat', word: 'HAT', letters: ['H', 'A', 'T'], emoji: '🎩', category: 'Clothes', prompt: 'Can you spell HAT?' },
-  { id: 'rug', word: 'RUG', letters: ['R', 'U', 'G'], emoji: '🪡', category: 'Home', prompt: 'Can you spell RUG?' },
-  { id: 'mat', word: 'MAT', letters: ['M', 'A', 'T'], emoji: '🧘', category: 'Home', prompt: 'Can you spell MAT?' },
-  { id: 'fan', word: 'FAN', letters: ['F', 'A', 'N'], emoji: '🪭', category: 'Home', prompt: 'Can you spell FAN?' },
-  { id: 'pot', word: 'POT', letters: ['P', 'O', 'T'], emoji: '🪴', category: 'Home', prompt: 'Can you spell POT?' },
-  { id: 'pan', word: 'PAN', letters: ['P', 'A', 'N'], emoji: '🍳', category: 'Home', prompt: 'Can you spell PAN?' },
-  { id: 'tub', word: 'TUB', letters: ['T', 'U', 'B'], emoji: '🛁', category: 'Home', prompt: 'Can you spell TUB?' },
-  { id: 'map', word: 'MAP', letters: ['M', 'A', 'P'], emoji: '🗺️', category: 'Things', prompt: 'Can you spell MAP?' },
-  { id: 'key', word: 'KEY', letters: ['K', 'E', 'Y'], emoji: '🔑', category: 'Things', prompt: 'Can you spell KEY?' },
-
-  // Nature & Weather
-  { id: 'sun', word: 'SUN', letters: ['S', 'U', 'N'], emoji: '☀️', category: 'Nature', prompt: 'Can you spell SUN?' },
-  { id: 'bug', word: 'BUG', letters: ['B', 'U', 'G'], emoji: '🐞', category: 'Nature', prompt: 'Can you spell BUG?' },
-  { id: 'mud', word: 'MUD', letters: ['M', 'U', 'D'], emoji: '🟤', category: 'Nature', prompt: 'Can you spell MUD?' },
-  { id: 'sky', word: 'SKY', letters: ['S', 'K', 'Y'], emoji: '🌌', category: 'Nature', prompt: 'Can you spell SKY?' },
-  { id: 'sea', word: 'SEA', letters: ['S', 'E', 'A'], emoji: '🌊', category: 'Nature', prompt: 'Can you spell SEA?' },
-
-  // Vehicles & Places
-  { id: 'bus', word: 'BUS', letters: ['B', 'U', 'S'], emoji: '🚌', category: 'Vehicles', prompt: 'Can you spell BUS?' },
-  { id: 'car', word: 'CAR', letters: ['C', 'A', 'R'], emoji: '🚗', category: 'Vehicles', prompt: 'Can you spell CAR?' },
-  { id: 'jet', word: 'JET', letters: ['J', 'E', 'T'], emoji: '✈️', category: 'Vehicles', prompt: 'Can you spell JET?' },
-  { id: 'van', word: 'VAN', letters: ['V', 'A', 'N'], emoji: '🚐', category: 'Vehicles', prompt: 'Can you spell VAN?' },
-  { id: 'web', word: 'WEB', letters: ['W', 'E', 'B'], emoji: '🕸️', category: 'Nature', prompt: 'Can you spell WEB?' },
-  { id: 'zoo', word: 'ZOO', letters: ['Z', 'O', 'O'], emoji: '🦁', category: 'Places', prompt: 'Can you spell ZOO?' },
-
-  // Foods & Yummies
-  { id: 'jam', word: 'JAM', letters: ['J', 'A', 'M'], emoji: '🫙', category: 'Food', prompt: 'Can you spell JAM?' },
-  { id: 'nut', word: 'NUT', letters: ['N', 'U', 'T'], emoji: '🥜', category: 'Food', prompt: 'Can you spell NUT?' },
-  { id: 'bun', word: 'BUN', letters: ['B', 'U', 'N'], emoji: '🍔', category: 'Food', prompt: 'Can you spell BUN?' },
-  { id: 'egg', word: 'EGG', letters: ['E', 'G', 'G'], emoji: '🥚', category: 'Food', prompt: 'Can you spell EGG?' },
-  { id: 'pie', word: 'PIE', letters: ['P', 'I', 'E'], emoji: '🥧', category: 'Food', prompt: 'Can you spell PIE?' },
-  { id: 'tea', word: 'TEA', letters: ['T', 'E', 'A'], emoji: '🍵', category: 'Food', prompt: 'Can you spell TEA?' },
-  { id: 'yam', word: 'YAM', letters: ['Y', 'A', 'M'], emoji: '🍠', category: 'Food', prompt: 'Can you spell YAM?' }
+  {
+    "id": "cat",
+    "word": "CAT",
+    "letters": [
+      "C",
+      "A",
+      "T"
+    ],
+    "emoji": "\ud83d\udc31",
+    "category": "Animals",
+    "prompt": "Can you spell CAT?"
+  },
+  {
+    "id": "dog",
+    "word": "DOG",
+    "letters": [
+      "D",
+      "O",
+      "G"
+    ],
+    "emoji": "\ud83d\udc36",
+    "category": "Animals",
+    "prompt": "Can you spell DOG?"
+  },
+  {
+    "id": "pig",
+    "word": "PIG",
+    "letters": [
+      "P",
+      "I",
+      "G"
+    ],
+    "emoji": "\ud83d\udc37",
+    "category": "Animals",
+    "prompt": "Can you spell PIG?"
+  },
+  {
+    "id": "fox",
+    "word": "FOX",
+    "letters": [
+      "F",
+      "O",
+      "X"
+    ],
+    "emoji": "\ud83e\udd8a",
+    "category": "Animals",
+    "prompt": "Can you spell FOX?"
+  },
+  {
+    "id": "hen",
+    "word": "HEN",
+    "letters": [
+      "H",
+      "E",
+      "N"
+    ],
+    "emoji": "\ud83d\udc14",
+    "category": "Animals",
+    "prompt": "Can you spell HEN?"
+  },
+  {
+    "id": "cow",
+    "word": "COW",
+    "letters": [
+      "C",
+      "O",
+      "W"
+    ],
+    "emoji": "\ud83d\udc2e",
+    "category": "Animals",
+    "prompt": "Can you spell COW?"
+  },
+  {
+    "id": "bat",
+    "word": "BAT",
+    "letters": [
+      "B",
+      "A",
+      "T"
+    ],
+    "emoji": "\ud83e\udd87",
+    "category": "Animals",
+    "prompt": "Can you spell BAT?"
+  },
+  {
+    "id": "cub",
+    "word": "CUB",
+    "letters": [
+      "C",
+      "U",
+      "B"
+    ],
+    "emoji": "\ud83d\udc3b",
+    "category": "Animals",
+    "prompt": "Can you spell CUB?"
+  },
+  {
+    "id": "pup",
+    "word": "PUP",
+    "letters": [
+      "P",
+      "U",
+      "P"
+    ],
+    "emoji": "\ud83d\udc36",
+    "category": "Animals",
+    "prompt": "Can you spell PUP?"
+  },
+  {
+    "id": "bee",
+    "word": "BEE",
+    "letters": [
+      "B",
+      "E",
+      "E"
+    ],
+    "emoji": "\ud83d\udc1d",
+    "category": "Animals",
+    "prompt": "Can you spell BEE?"
+  },
+  {
+    "id": "owl",
+    "word": "OWL",
+    "letters": [
+      "O",
+      "W",
+      "L"
+    ],
+    "emoji": "\ud83e\udd89",
+    "category": "Animals",
+    "prompt": "Can you spell OWL?"
+  },
+  {
+    "id": "bug",
+    "word": "BUG",
+    "letters": [
+      "B",
+      "U",
+      "G"
+    ],
+    "emoji": "\ud83d\udc1e",
+    "category": "Animals",
+    "prompt": "Can you spell BUG?"
+  },
+  {
+    "id": "ram",
+    "word": "RAM",
+    "letters": [
+      "R",
+      "A",
+      "M"
+    ],
+    "emoji": "\ud83d\udc0f",
+    "category": "Animals",
+    "prompt": "Can you spell RAM?"
+  },
+  {
+    "id": "rat",
+    "word": "RAT",
+    "letters": [
+      "R",
+      "A",
+      "T"
+    ],
+    "emoji": "\ud83d\udc00",
+    "category": "Animals",
+    "prompt": "Can you spell RAT?"
+  },
+  {
+    "id": "yak",
+    "word": "YAK",
+    "letters": [
+      "Y",
+      "A",
+      "K"
+    ],
+    "emoji": "\ud83d\udc02",
+    "category": "Animals",
+    "prompt": "Can you spell YAK?"
+  },
+  {
+    "id": "bed",
+    "word": "BED",
+    "letters": [
+      "B",
+      "E",
+      "D"
+    ],
+    "emoji": "\ud83d\udecf\ufe0f",
+    "category": "Home",
+    "prompt": "Can you spell BED?"
+  },
+  {
+    "id": "cup",
+    "word": "CUP",
+    "letters": [
+      "C",
+      "U",
+      "P"
+    ],
+    "emoji": "\ud83e\udd64",
+    "category": "Home",
+    "prompt": "Can you spell CUP?"
+  },
+  {
+    "id": "box",
+    "word": "BOX",
+    "letters": [
+      "B",
+      "O",
+      "X"
+    ],
+    "emoji": "\ud83d\udce6",
+    "category": "Home",
+    "prompt": "Can you spell BOX?"
+  },
+  {
+    "id": "pen",
+    "word": "PEN",
+    "letters": [
+      "P",
+      "E",
+      "N"
+    ],
+    "emoji": "\ud83d\udd8a\ufe0f",
+    "category": "Home",
+    "prompt": "Can you spell PEN?"
+  },
+  {
+    "id": "hat",
+    "word": "HAT",
+    "letters": [
+      "H",
+      "A",
+      "T"
+    ],
+    "emoji": "\ud83c\udfa9",
+    "category": "Home",
+    "prompt": "Can you spell HAT?"
+  },
+  {
+    "id": "rug",
+    "word": "RUG",
+    "letters": [
+      "R",
+      "U",
+      "G"
+    ],
+    "emoji": "\ud83e\udea1",
+    "category": "Home",
+    "prompt": "Can you spell RUG?"
+  },
+  {
+    "id": "mat",
+    "word": "MAT",
+    "letters": [
+      "M",
+      "A",
+      "T"
+    ],
+    "emoji": "\ud83e\uddd8",
+    "category": "Home",
+    "prompt": "Can you spell MAT?"
+  },
+  {
+    "id": "fan",
+    "word": "FAN",
+    "letters": [
+      "F",
+      "A",
+      "N"
+    ],
+    "emoji": "\ud83e\udead",
+    "category": "Home",
+    "prompt": "Can you spell FAN?"
+  },
+  {
+    "id": "pot",
+    "word": "POT",
+    "letters": [
+      "P",
+      "O",
+      "T"
+    ],
+    "emoji": "\ud83e\udeb4",
+    "category": "Home",
+    "prompt": "Can you spell POT?"
+  },
+  {
+    "id": "pan",
+    "word": "PAN",
+    "letters": [
+      "P",
+      "A",
+      "N"
+    ],
+    "emoji": "\ud83c\udf73",
+    "category": "Home",
+    "prompt": "Can you spell PAN?"
+  },
+  {
+    "id": "tub",
+    "word": "TUB",
+    "letters": [
+      "T",
+      "U",
+      "B"
+    ],
+    "emoji": "\ud83d\udec1",
+    "category": "Home",
+    "prompt": "Can you spell TUB?"
+  },
+  {
+    "id": "map",
+    "word": "MAP",
+    "letters": [
+      "M",
+      "A",
+      "P"
+    ],
+    "emoji": "\ud83d\uddfa\ufe0f",
+    "category": "Home",
+    "prompt": "Can you spell MAP?"
+  },
+  {
+    "id": "key",
+    "word": "KEY",
+    "letters": [
+      "K",
+      "E",
+      "Y"
+    ],
+    "emoji": "\ud83d\udd11",
+    "category": "Home",
+    "prompt": "Can you spell KEY?"
+  },
+  {
+    "id": "cap",
+    "word": "CAP",
+    "letters": [
+      "C",
+      "A",
+      "P"
+    ],
+    "emoji": "\ud83e\udde2",
+    "category": "Home",
+    "prompt": "Can you spell CAP?"
+  },
+  {
+    "id": "mug",
+    "word": "MUG",
+    "letters": [
+      "M",
+      "U",
+      "G"
+    ],
+    "emoji": "\u2615",
+    "category": "Home",
+    "prompt": "Can you spell MUG?"
+  },
+  {
+    "id": "pin",
+    "word": "PIN",
+    "letters": [
+      "P",
+      "I",
+      "N"
+    ],
+    "emoji": "\ud83d\udccc",
+    "category": "Home",
+    "prompt": "Can you spell PIN?"
+  },
+  {
+    "id": "bag",
+    "word": "BAG",
+    "letters": [
+      "B",
+      "A",
+      "G"
+    ],
+    "emoji": "\ud83c\udf92",
+    "category": "Home",
+    "prompt": "Can you spell BAG?"
+  },
+  {
+    "id": "bin",
+    "word": "BIN",
+    "letters": [
+      "B",
+      "I",
+      "N"
+    ],
+    "emoji": "\ud83d\uddd1\ufe0f",
+    "category": "Home",
+    "prompt": "Can you spell BIN?"
+  },
+  {
+    "id": "rag",
+    "word": "RAG",
+    "letters": [
+      "R",
+      "A",
+      "G"
+    ],
+    "emoji": "\ud83e\uddf9",
+    "category": "Home",
+    "prompt": "Can you spell RAG?"
+  },
+  {
+    "id": "top",
+    "word": "TOP",
+    "letters": [
+      "T",
+      "O",
+      "P"
+    ],
+    "emoji": "\ud83e\ude80",
+    "category": "Home",
+    "prompt": "Can you spell TOP?"
+  },
+  {
+    "id": "sun",
+    "word": "SUN",
+    "letters": [
+      "S",
+      "U",
+      "N"
+    ],
+    "emoji": "\u2600\ufe0f",
+    "category": "Nature",
+    "prompt": "Can you spell SUN?"
+  },
+  {
+    "id": "mud",
+    "word": "MUD",
+    "letters": [
+      "M",
+      "U",
+      "D"
+    ],
+    "emoji": "\ud83d\udfe4",
+    "category": "Nature",
+    "prompt": "Can you spell MUD?"
+  },
+  {
+    "id": "sky",
+    "word": "SKY",
+    "letters": [
+      "S",
+      "K",
+      "Y"
+    ],
+    "emoji": "\ud83c\udf0c",
+    "category": "Nature",
+    "prompt": "Can you spell SKY?"
+  },
+  {
+    "id": "sea",
+    "word": "SEA",
+    "letters": [
+      "S",
+      "E",
+      "A"
+    ],
+    "emoji": "\ud83c\udf0a",
+    "category": "Nature",
+    "prompt": "Can you spell SEA?"
+  },
+  {
+    "id": "web",
+    "word": "WEB",
+    "letters": [
+      "W",
+      "E",
+      "B"
+    ],
+    "emoji": "\ud83d\udd78\ufe0f",
+    "category": "Nature",
+    "prompt": "Can you spell WEB?"
+  },
+  {
+    "id": "fog",
+    "word": "FOG",
+    "letters": [
+      "F",
+      "O",
+      "G"
+    ],
+    "emoji": "\ud83c\udf2b\ufe0f",
+    "category": "Nature",
+    "prompt": "Can you spell FOG?"
+  },
+  {
+    "id": "dew",
+    "word": "DEW",
+    "letters": [
+      "D",
+      "E",
+      "W"
+    ],
+    "emoji": "\ud83d\udca7",
+    "category": "Nature",
+    "prompt": "Can you spell DEW?"
+  },
+  {
+    "id": "log",
+    "word": "LOG",
+    "letters": [
+      "L",
+      "O",
+      "G"
+    ],
+    "emoji": "\ud83e\udeb5",
+    "category": "Nature",
+    "prompt": "Can you spell LOG?"
+  },
+  {
+    "id": "pod",
+    "word": "POD",
+    "letters": [
+      "P",
+      "O",
+      "D"
+    ],
+    "emoji": "\ud83e\udedb",
+    "category": "Nature",
+    "prompt": "Can you spell POD?"
+  },
+  {
+    "id": "gem",
+    "word": "GEM",
+    "letters": [
+      "G",
+      "E",
+      "M"
+    ],
+    "emoji": "\ud83d\udc8e",
+    "category": "Nature",
+    "prompt": "Can you spell GEM?"
+  },
+  {
+    "id": "oak",
+    "word": "OAK",
+    "letters": [
+      "O",
+      "A",
+      "K"
+    ],
+    "emoji": "\ud83c\udf33",
+    "category": "Nature",
+    "prompt": "Can you spell OAK?"
+  },
+  {
+    "id": "ice",
+    "word": "ICE",
+    "letters": [
+      "I",
+      "C",
+      "E"
+    ],
+    "emoji": "\ud83e\uddca",
+    "category": "Nature",
+    "prompt": "Can you spell ICE?"
+  },
+  {
+    "id": "air",
+    "word": "AIR",
+    "letters": [
+      "A",
+      "I",
+      "R"
+    ],
+    "emoji": "\ud83d\udca8",
+    "category": "Nature",
+    "prompt": "Can you spell AIR?"
+  },
+  {
+    "id": "ray",
+    "word": "RAY",
+    "letters": [
+      "R",
+      "A",
+      "Y"
+    ],
+    "emoji": "\ud83c\udf24\ufe0f",
+    "category": "Nature",
+    "prompt": "Can you spell RAY?"
+  },
+  {
+    "id": "nut",
+    "word": "NUT",
+    "letters": [
+      "N",
+      "U",
+      "T"
+    ],
+    "emoji": "\ud83e\udd5c",
+    "category": "Nature",
+    "prompt": "Can you spell NUT?"
+  },
+  {
+    "id": "bus",
+    "word": "BUS",
+    "letters": [
+      "B",
+      "U",
+      "S"
+    ],
+    "emoji": "\ud83d\ude8c",
+    "category": "Vehicles",
+    "prompt": "Can you spell BUS?"
+  },
+  {
+    "id": "car",
+    "word": "CAR",
+    "letters": [
+      "C",
+      "A",
+      "R"
+    ],
+    "emoji": "\ud83d\ude97",
+    "category": "Vehicles",
+    "prompt": "Can you spell CAR?"
+  },
+  {
+    "id": "jet",
+    "word": "JET",
+    "letters": [
+      "J",
+      "E",
+      "T"
+    ],
+    "emoji": "\u2708\ufe0f",
+    "category": "Vehicles",
+    "prompt": "Can you spell JET?"
+  },
+  {
+    "id": "van",
+    "word": "VAN",
+    "letters": [
+      "V",
+      "A",
+      "N"
+    ],
+    "emoji": "\ud83d\ude90",
+    "category": "Vehicles",
+    "prompt": "Can you spell VAN?"
+  },
+  {
+    "id": "cab",
+    "word": "CAB",
+    "letters": [
+      "C",
+      "A",
+      "B"
+    ],
+    "emoji": "\ud83d\ude95",
+    "category": "Vehicles",
+    "prompt": "Can you spell CAB?"
+  },
+  {
+    "id": "rig",
+    "word": "RIG",
+    "letters": [
+      "R",
+      "I",
+      "G"
+    ],
+    "emoji": "\ud83d\ude9b",
+    "category": "Vehicles",
+    "prompt": "Can you spell RIG?"
+  },
+  {
+    "id": "sub",
+    "word": "SUB",
+    "letters": [
+      "S",
+      "U",
+      "B"
+    ],
+    "emoji": "\ud83d\udee5\ufe0f",
+    "category": "Vehicles",
+    "prompt": "Can you spell SUB?"
+  },
+  {
+    "id": "tow",
+    "word": "TOW",
+    "letters": [
+      "T",
+      "O",
+      "W"
+    ],
+    "emoji": "\ud83d\udede",
+    "category": "Vehicles",
+    "prompt": "Can you spell TOW?"
+  },
+  {
+    "id": "zoo",
+    "word": "ZOO",
+    "letters": [
+      "Z",
+      "O",
+      "O"
+    ],
+    "emoji": "\ud83e\udd81",
+    "category": "Vehicles",
+    "prompt": "Can you spell ZOO?"
+  },
+  {
+    "id": "tip",
+    "word": "TIP",
+    "letters": [
+      "T",
+      "I",
+      "P"
+    ],
+    "emoji": "\ud83d\udea9",
+    "category": "Vehicles",
+    "prompt": "Can you spell TIP?"
+  },
+  {
+    "id": "jam",
+    "word": "JAM",
+    "letters": [
+      "J",
+      "A",
+      "M"
+    ],
+    "emoji": "\ud83e\uded9",
+    "category": "Food",
+    "prompt": "Can you spell JAM?"
+  },
+  {
+    "id": "bun",
+    "word": "BUN",
+    "letters": [
+      "B",
+      "U",
+      "N"
+    ],
+    "emoji": "\ud83c\udf54",
+    "category": "Food",
+    "prompt": "Can you spell BUN?"
+  },
+  {
+    "id": "egg",
+    "word": "EGG",
+    "letters": [
+      "E",
+      "G",
+      "G"
+    ],
+    "emoji": "\ud83e\udd5a",
+    "category": "Food",
+    "prompt": "Can you spell EGG?"
+  },
+  {
+    "id": "pie",
+    "word": "PIE",
+    "letters": [
+      "P",
+      "I",
+      "E"
+    ],
+    "emoji": "\ud83e\udd67",
+    "category": "Food",
+    "prompt": "Can you spell PIE?"
+  },
+  {
+    "id": "tea",
+    "word": "TEA",
+    "letters": [
+      "T",
+      "E",
+      "A"
+    ],
+    "emoji": "\ud83c\udf75",
+    "category": "Food",
+    "prompt": "Can you spell TEA?"
+  },
+  {
+    "id": "yam",
+    "word": "YAM",
+    "letters": [
+      "Y",
+      "A",
+      "M"
+    ],
+    "emoji": "\ud83c\udf60",
+    "category": "Food",
+    "prompt": "Can you spell YAM?"
+  },
+  {
+    "id": "fig",
+    "word": "FIG",
+    "letters": [
+      "F",
+      "I",
+      "G"
+    ],
+    "emoji": "\ud83e\uded0",
+    "category": "Food",
+    "prompt": "Can you spell FIG?"
+  },
+  {
+    "id": "ham",
+    "word": "HAM",
+    "letters": [
+      "H",
+      "A",
+      "M"
+    ],
+    "emoji": "\ud83c\udf56",
+    "category": "Food",
+    "prompt": "Can you spell HAM?"
+  },
+  {
+    "id": "cod",
+    "word": "COD",
+    "letters": [
+      "C",
+      "O",
+      "D"
+    ],
+    "emoji": "\ud83d\udc1f",
+    "category": "Food",
+    "prompt": "Can you spell COD?"
+  },
+  {
+    "id": "dip",
+    "word": "DIP",
+    "letters": [
+      "D",
+      "I",
+      "P"
+    ],
+    "emoji": "\ud83e\udd63",
+    "category": "Food",
+    "prompt": "Can you spell DIP?"
+  },
+  {
+    "id": "pop",
+    "word": "POP",
+    "letters": [
+      "P",
+      "O",
+      "P"
+    ],
+    "emoji": "\ud83c\udf7f",
+    "category": "Food",
+    "prompt": "Can you spell POP?"
+  },
+  {
+    "id": "gum",
+    "word": "GUM",
+    "letters": [
+      "G",
+      "U",
+      "M"
+    ],
+    "emoji": "\ud83c\udf6c",
+    "category": "Food",
+    "prompt": "Can you spell GUM?"
+  },
+  {
+    "id": "sip",
+    "word": "SIP",
+    "letters": [
+      "S",
+      "I",
+      "P"
+    ],
+    "emoji": "\ud83e\uddc3",
+    "category": "Food",
+    "prompt": "Can you spell SIP?"
+  },
+  {
+    "id": "pod_74",
+    "word": "POD",
+    "letters": [
+      "P",
+      "O",
+      "D"
+    ],
+    "emoji": "\ud83c\udf31",
+    "category": "Food",
+    "prompt": "Can you spell POD?"
+  },
+  {
+    "id": "ice_75",
+    "word": "ICE",
+    "letters": [
+      "I",
+      "C",
+      "E"
+    ],
+    "emoji": "\ud83c\udf67",
+    "category": "Food",
+    "prompt": "Can you spell ICE?"
+  },
+  {
+    "id": "run",
+    "word": "RUN",
+    "letters": [
+      "R",
+      "U",
+      "N"
+    ],
+    "emoji": "\ud83c\udfc3",
+    "category": "Action",
+    "prompt": "Can you spell RUN?"
+  },
+  {
+    "id": "hop",
+    "word": "HOP",
+    "letters": [
+      "H",
+      "O",
+      "P"
+    ],
+    "emoji": "\ud83d\udc07",
+    "category": "Action",
+    "prompt": "Can you spell HOP?"
+  },
+  {
+    "id": "jog",
+    "word": "JOG",
+    "letters": [
+      "J",
+      "O",
+      "G"
+    ],
+    "emoji": "\ud83c\udfc3\u200d\u2640\ufe0f",
+    "category": "Action",
+    "prompt": "Can you spell JOG?"
+  },
+  {
+    "id": "wag",
+    "word": "WAG",
+    "letters": [
+      "W",
+      "A",
+      "G"
+    ],
+    "emoji": "\ud83d\udc15",
+    "category": "Action",
+    "prompt": "Can you spell WAG?"
+  },
+  {
+    "id": "dig",
+    "word": "DIG",
+    "letters": [
+      "D",
+      "I",
+      "G"
+    ],
+    "emoji": "\u26cf\ufe0f",
+    "category": "Action",
+    "prompt": "Can you spell DIG?"
+  },
+  {
+    "id": "hug",
+    "word": "HUG",
+    "letters": [
+      "H",
+      "U",
+      "G"
+    ],
+    "emoji": "\ud83e\udd17",
+    "category": "Action",
+    "prompt": "Can you spell HUG?"
+  },
+  {
+    "id": "sit",
+    "word": "SIT",
+    "letters": [
+      "S",
+      "I",
+      "T"
+    ],
+    "emoji": "\ud83e\ude91",
+    "category": "Action",
+    "prompt": "Can you spell SIT?"
+  },
+  {
+    "id": "cut",
+    "word": "CUT",
+    "letters": [
+      "C",
+      "U",
+      "T"
+    ],
+    "emoji": "\u2702\ufe0f",
+    "category": "Action",
+    "prompt": "Can you spell CUT?"
+  },
+  {
+    "id": "tap",
+    "word": "TAP",
+    "letters": [
+      "T",
+      "A",
+      "P"
+    ],
+    "emoji": "\ud83d\udc46",
+    "category": "Action",
+    "prompt": "Can you spell TAP?"
+  },
+  {
+    "id": "nod",
+    "word": "NOD",
+    "letters": [
+      "N",
+      "O",
+      "D"
+    ],
+    "emoji": "\ud83d\ude0a",
+    "category": "Action",
+    "prompt": "Can you spell NOD?"
+  },
+  {
+    "id": "bow",
+    "word": "BOW",
+    "letters": [
+      "B",
+      "O",
+      "W"
+    ],
+    "emoji": "\ud83c\udf80",
+    "category": "Action",
+    "prompt": "Can you spell BOW?"
+  },
+  {
+    "id": "fit",
+    "word": "FIT",
+    "letters": [
+      "F",
+      "I",
+      "T"
+    ],
+    "emoji": "\ud83d\udcaa",
+    "category": "Action",
+    "prompt": "Can you spell FIT?"
+  },
+  {
+    "id": "win",
+    "word": "WIN",
+    "letters": [
+      "W",
+      "I",
+      "N"
+    ],
+    "emoji": "\ud83c\udfc6",
+    "category": "Action",
+    "prompt": "Can you spell WIN?"
+  },
+  {
+    "id": "wav",
+    "word": "WAV",
+    "letters": [
+      "W",
+      "A",
+      "V"
+    ],
+    "emoji": "\ud83d\udc4b",
+    "category": "Action",
+    "prompt": "Can you spell WAV?"
+  },
+  {
+    "id": "zip",
+    "word": "ZIP",
+    "letters": [
+      "Z",
+      "I",
+      "P"
+    ],
+    "emoji": "\ud83e\udd10",
+    "category": "Action",
+    "prompt": "Can you spell ZIP?"
+  },
+  {
+    "id": "red",
+    "word": "RED",
+    "letters": [
+      "R",
+      "E",
+      "D"
+    ],
+    "emoji": "\ud83d\udd34",
+    "category": "Toys",
+    "prompt": "Can you spell RED?"
+  },
+  {
+    "id": "tan",
+    "word": "TAN",
+    "letters": [
+      "T",
+      "A",
+      "N"
+    ],
+    "emoji": "\ud83e\udd0e",
+    "category": "Toys",
+    "prompt": "Can you spell TAN?"
+  },
+  {
+    "id": "dot",
+    "word": "DOT",
+    "letters": [
+      "D",
+      "O",
+      "T"
+    ],
+    "emoji": "\ud83d\udfe0",
+    "category": "Toys",
+    "prompt": "Can you spell DOT?"
+  },
+  {
+    "id": "tin",
+    "word": "TIN",
+    "letters": [
+      "T",
+      "I",
+      "N"
+    ],
+    "emoji": "\ud83e\udd6b",
+    "category": "Toys",
+    "prompt": "Can you spell TIN?"
+  },
+  {
+    "id": "rib",
+    "word": "RIB",
+    "letters": [
+      "R",
+      "I",
+      "B"
+    ],
+    "emoji": "\ud83c\udf97\ufe0f",
+    "category": "Toys",
+    "prompt": "Can you spell RIB?"
+  },
+  {
+    "id": "net",
+    "word": "NET",
+    "letters": [
+      "N",
+      "E",
+      "T"
+    ],
+    "emoji": "\ud83e\udd45",
+    "category": "Toys",
+    "prompt": "Can you spell NET?"
+  },
+  {
+    "id": "tag",
+    "word": "TAG",
+    "letters": [
+      "T",
+      "A",
+      "G"
+    ],
+    "emoji": "\ud83c\udff7\ufe0f",
+    "category": "Toys",
+    "prompt": "Can you spell TAG?"
+  },
+  {
+    "id": "pad",
+    "word": "PAD",
+    "letters": [
+      "P",
+      "A",
+      "D"
+    ],
+    "emoji": "\ud83d\udcdd",
+    "category": "Toys",
+    "prompt": "Can you spell PAD?"
+  },
+  {
+    "id": "peg",
+    "word": "PEG",
+    "letters": [
+      "P",
+      "E",
+      "G"
+    ],
+    "emoji": "\ud83e\udeb5",
+    "category": "Toys",
+    "prompt": "Can you spell PEG?"
+  },
+  {
+    "id": "kit",
+    "word": "KIT",
+    "letters": [
+      "K",
+      "I",
+      "T"
+    ],
+    "emoji": "\ud83e\uddf0",
+    "category": "Toys",
+    "prompt": "Can you spell KIT?"
+  }
 ];
 
 export const SENTENCES_DATA = [

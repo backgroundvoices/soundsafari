@@ -4,16 +4,17 @@ import { BLENDS_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
 
 export function BlendsLab({ onAwardStar }) {
+  const getRandomBlend = () => BLENDS_DATA[Math.floor(Math.random() * BLENDS_DATA.length)];
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedBlend, setSelectedBlend] = useState(BLENDS_DATA[0]);
-  const [exploredBlends, setExploredBlends] = useState(new Set(['CH']));
+  const [selectedBlend, setSelectedBlend] = useState(getRandomBlend);
+  const [exploredBlends, setExploredBlends] = useState(new Set([selectedBlend.blend]));
 
   const categories = ['All', 'H-Digraphs', 'L-Blends', 'R-Blends', 'S-Blends'];
 
   const filteredBlends = BLENDS_DATA.filter((item) => {
     if (selectedCategory === 'All') return true;
     return item.category === selectedCategory;
-  });
+  }).sort(() => Math.random() - 0.5);
 
   const handleBlendClick = (blendObj) => {
     setSelectedBlend(blendObj);

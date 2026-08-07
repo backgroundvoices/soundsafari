@@ -15,14 +15,16 @@ export function WordBakery({ onAwardStar }) {
   const [availableTiles, setAvailableTiles] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food'];
+  const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food', 'Action', 'Toys'];
+
+  const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     let list = CVC_WORDS;
     if (selectedCategory !== 'All') {
       list = CVC_WORDS.filter(w => w.category === selectedCategory);
     }
-    setFilteredList(list);
+    setFilteredList(shuffleArray(list));
     setWordIndex(0);
   }, [selectedCategory]);
 

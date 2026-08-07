@@ -18,7 +18,7 @@ export function SayAndPlay({ onAwardStar }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [micError, setMicError] = useState('');
 
-  const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food'];
+  const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food', 'Action', 'Toys'];
 
   useEffect(() => {
     return () => {
@@ -27,12 +27,14 @@ export function SayAndPlay({ onAwardStar }) {
     };
   }, []);
 
+  const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
   useEffect(() => {
     let list = CVC_WORDS;
     if (selectedCategory !== 'All') {
       list = CVC_WORDS.filter(w => w.category === selectedCategory);
     }
-    setFilteredWords(list);
+    setFilteredWords(shuffleArray(list));
     setWordIndex(0);
   }, [selectedCategory]);
 

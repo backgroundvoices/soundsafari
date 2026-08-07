@@ -4,9 +4,10 @@ import { ALPHABET_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
 
 export function PhonicsJungle({ onAwardStar }) {
-  const [selectedLetter, setSelectedLetter] = useState(ALPHABET_DATA[0]);
+  const getRandomLetter = () => ALPHABET_DATA[Math.floor(Math.random() * ALPHABET_DATA.length)];
+  const [selectedLetter, setSelectedLetter] = useState(getRandomLetter);
   const [filter, setFilter] = useState('all');
-  const [learnedLetters, setLearnedLetters] = useState(new Set(['A']));
+  const [learnedLetters, setLearnedLetters] = useState(new Set([selectedLetter.letter]));
 
   const vowels = ['A', 'E', 'I', 'O', 'U'];
 
