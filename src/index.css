@@ -296,7 +296,10 @@ button {
 }
 
 /* Mobile Navigation & Screen Optimizations */
-.mobile-menu-toggle-btn {
+/* The toggle is also an .icon-btn, and that rule sets `display: flex` further
+   down this file at the same specificity — matching the header as well keeps
+   the hamburger hidden on desktop, where the full nav is already on show. */
+.app-header .mobile-menu-toggle-btn {
   display: none;
 }
 
