@@ -710,13 +710,38 @@ button {
   margin-top: 2px;
 }
 
-/* WORD BAKERY & SENTENCE SAFARI STAGES */
+/* These two pages carry the tallest exercises, so their heading gives up the
+   room the stage needs. */
+.word-bakery .mode-header,
+.sentence-safari .mode-header {
+  padding: 12px 22px;
+}
+
+.word-bakery .mode-header h2,
+.sentence-safari .mode-header h2 {
+  font-size: 1.45rem;
+}
+
+.word-bakery .mode-header p,
+.sentence-safari .mode-header p {
+  font-size: 0.9rem;
+}
+
+.mode-container.word-bakery,
+.mode-container.sentence-safari {
+  gap: 12px;
+}
+
+/* WORD BAKERY & SENTENCE SAFARI STAGES
+   Both stages are stacks of fixed-height rows, so they are sized to leave the
+   whole exercise on screen at a laptop's height rather than running under the
+   fold the way they used to. */
 .spelling-stage, .sentence-stage {
-  padding: 36px;
+  padding: 18px 24px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 14px;
   text-align: center;
 }
 
@@ -724,39 +749,39 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .picture-emoji, .sentence-emoji {
-  font-size: 5.5rem;
+  font-size: 4.4rem;
 }
 
 .word-category-tag {
   background: rgba(255, 255, 255, 0.1);
-  padding: 6px 16px;
+  padding: 4px 14px;
   border-radius: 14px;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 
 /* Spelling Slots */
 .spelling-slots {
   display: flex;
-  gap: 16px;
-  margin: 10px 0;
+  gap: 12px;
+  margin: 2px 0;
 }
 
 .letter-slot {
-  width: 84px;
-  height: 96px;
+  width: 72px;
+  height: 80px;
   background: rgba(0, 0, 0, 0.3);
   border: 3px dashed rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-rounded);
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #ffffff;
   cursor: pointer;
@@ -777,7 +802,7 @@ button {
 
 .slot-placeholder {
   color: rgba(255, 255, 255, 0.2);
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 /* Choices Bank */
@@ -785,31 +810,31 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   width: 100%;
 }
 
 .bank-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 
 .tiles-bank, .words-flex-bank {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 10px;
   justify-content: center;
 }
 
 .letter-tile-btn {
-  width: 72px;
-  height: 80px;
+  width: 64px;
+  height: 70px;
   background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
   color: #ffffff;
   font-family: var(--font-rounded);
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  border-radius: 18px;
+  border-radius: 16px;
   box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
   display: flex;
   align-items: center;
@@ -822,13 +847,13 @@ button {
 }
 
 .word-card-btn {
-  padding: 16px 28px;
+  padding: 12px 22px;
   background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
   color: #ffffff;
   font-family: var(--font-rounded);
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: 0 6px 20px rgba(192, 132, 252, 0.35);
 }
 
@@ -836,23 +861,73 @@ button {
   transform: translateY(-4px) scale(1.05);
 }
 
+/* Narrow laptops wrap the app nav and the page's own filter row onto extra
+   lines, so these two stages give up another notch to stay on screen. */
+@media (max-width: 1100px) {
+  .word-bakery .spelling-stage,
+  .sentence-safari .sentence-stage {
+    padding: 12px 16px 16px;
+    gap: 10px;
+  }
+
+  .word-bakery .picture-emoji,
+  .sentence-safari .sentence-emoji {
+    font-size: 3.4rem;
+  }
+
+  .word-bakery .btn-speaker,
+  .sentence-safari .btn-speaker {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+
+  .word-bakery .filter-btn,
+  .sentence-safari .filter-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .letter-slot {
+    width: 60px;
+    height: 66px;
+    font-size: 2rem;
+  }
+
+  .letter-tile-btn {
+    width: 54px;
+    height: 58px;
+    font-size: 1.75rem;
+  }
+
+  .word-card-btn {
+    padding: 9px 16px;
+    font-size: 1.3rem;
+  }
+
+  .sentence-word-slot {
+    min-width: 76px;
+    padding: 9px 14px;
+    font-size: 1.3rem;
+  }
+}
+
 /* Sentence Strip */
 .sentence-slots-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
-  margin: 14px 0;
+  margin: 2px 0;
 }
 
 .sentence-word-slot {
-  min-width: 110px;
-  padding: 16px 24px;
+  min-width: 92px;
+  padding: 12px 18px;
   background: rgba(0, 0, 0, 0.3);
   border: 3px dashed rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  border-radius: 18px;
   font-family: var(--font-rounded);
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: #ffffff;
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, Sparkles, ArrowRight, ArrowLeft, Play, RefreshCw, CheckCircle, Shuffle } from 'lucide-react';
+import { Volume2, Sparkles, ArrowRight, ArrowLeft, Play, CheckCircle, Shuffle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { SENTENCES_DATA } from '../utils/phonicsData';
 import { audioEngine } from '../utils/audioEngine';
@@ -263,11 +263,6 @@ export function SentenceSafari({ onAwardStar }) {
             ))}
           </div>
         </div>
-
-        <button className="btn-tertiary reset-word-btn" onClick={() => initSentence(currentSentenceObj)}>
-          <RefreshCw className="icon-xs" />
-          <span>Reset Sentence</span>
-        </button>
       </div>
     </div>
   );
