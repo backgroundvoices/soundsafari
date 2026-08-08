@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, Sparkles, ArrowRight, ArrowLeft, Star, CheckCircle, Layers } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CVC_WORDS } from '../utils/phonicsData';
@@ -17,7 +17,19 @@ export function WordBakery({ onAwardStar }) {
 
   const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food', 'Action', 'Toys'];
 
+  // Identifies the word on screen. The praise for a solved word arrives over
+  // two async hops - a timer, then the promise for the spelled-out reading -
+  // and the child can press Next during either. Each continuation captures the
+  // token it started under and stays silent if the word has moved on since.
+  // A boolean flag cannot do this: cancelling speech resolves the pending
+  // utterance a task later, by which point the next word's effect has already
+  // reset the flag, so the stale continuation would read itself as current.
+  const wordTokenRef = useRef(0);
+  const successTimerRef = useRef(null);
+
   const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+  useEffect(() => () => audioEngine.stopSpeech(), []);
 
   useEffect(() => {
     let list = CVC_WORDS;
@@ -29,9 +41,16 @@ export function WordBakery({ onAwardStar }) {
   }, [selectedCategory]);
 
   useEffect(() => {
+    wordTokenRef.current += 1;
     if (currentWord) {
       initWord(currentWord);
     }
+    return () => {
+      if (successTimerRef.current !== null) {
+        clearTimeout(successTimerRef.current);
+        successTimerRef.current = null;
+      }
+    };
   }, [wordIndex, filteredList]);
 
   const initWord = (wordObj) => {
@@ -94,18 +113,29 @@ export function WordBakery({ onAwardStar }) {
   const handleSuccess = () => {
     setIsCompleted(true);
     audioEngine.playAudioEffect('correct');
-    
+
     confetti({
       particleCount: 80,
       spread: 70,
       origin: { y: 0.6 }
     });
 
-    setTimeout(() => {
-      audioEngine.speakWordSlowly(currentWord.word).then(() => {
+    // The star is earned by spelling the word, so it is awarded here rather
+    // than at the end of the praise: a child who presses Next straight away
+    // has still solved it.
+    onAwardStar();
+
+    const token = wordTokenRef.current;
+    const solvedWord = currentWord.word;
+
+    successTimerRef.current = setTimeout(() => {
+      successTimerRef.current = null;
+      if (wordTokenRef.current !== token) return;
+
+      audioEngine.speakWordSlowly(solvedWord).then(() => {
+        if (wordTokenRef.current !== token) return;
         audioEngine.playAudioEffect('star');
-        audioEngine.speakText(`Awesome! You spelled ${currentWord.word}!`, { rate: 0.85 });
-        onAwardStar();
+        audioEngine.speakText(`Awesome! You spelled ${solvedWord}!`, { rate: 0.85 });
       });
     }, 400);
   };
@@ -116,11 +146,13 @@ export function WordBakery({ onAwardStar }) {
   };
 
   const nextWord = () => {
+    audioEngine.stopSpeech();
     audioEngine.playAudioEffect('click');
     setWordIndex((prev) => (prev + 1) % filteredList.length);
   };
 
   const prevWord = () => {
+    audioEngine.stopSpeech();
     audioEngine.playAudioEffect('click');
     setWordIndex((prev) => (prev - 1 + filteredList.length) % filteredList.length);
   };
