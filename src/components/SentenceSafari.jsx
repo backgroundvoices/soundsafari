@@ -16,13 +16,24 @@ export function SentenceSafari({ onAwardStar }) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [activeHighlightIndex, setActiveHighlightIndex] = useState(null);
 
-  const isCancelledRef = useRef(false);
+  // Identifies the sentence on screen. Reading a solved sentence aloud spans
+  // one word per utterance plus a final pass, and the praise waits on all of
+  // it, so a child pressing Next lands in the middle of that chain. Every
+  // continuation captures the token it began under and stops if the sentence
+  // has moved on. A boolean cannot do this: cancelling speech resolves the
+  // pending utterance a task later, after the next sentence's effect has
+  // already cleared the flag, so the stale work would read itself as current.
+  const sentenceTokenRef = useRef(0);
+  const successTimerRef = useRef(null);
   const categories = ['All', 'Animals', 'Nature', 'School', 'Toys', 'Family', 'Food'];
 
   useEffect(() => {
-    isCancelledRef.current = false;
     return () => {
-      isCancelledRef.current = true;
+      sentenceTokenRef.current += 1;
+      if (successTimerRef.current !== null) {
+        clearTimeout(successTimerRef.current);
+        successTimerRef.current = null;
+      }
       audioEngine.stopSpeech();
     };
   }, []);
@@ -39,9 +50,16 @@ export function SentenceSafari({ onAwardStar }) {
   }, [selectedCategory]);
 
   useEffect(() => {
+    sentenceTokenRef.current += 1;
     if (currentSentenceObj) {
       initSentence(currentSentenceObj);
     }
+    return () => {
+      if (successTimerRef.current !== null) {
+        clearTimeout(successTimerRef.current);
+        successTimerRef.current = null;
+      }
+    };
   }, [sentenceIndex, filteredSentences]);
 
   const initSentence = (obj) => {
@@ -103,13 +121,22 @@ export function SentenceSafari({ onAwardStar }) {
       origin: { y: 0.6 }
     });
 
-    setTimeout(() => {
-      readAloudWithHighlighting().then(() => {
-        if (!isCancelledRef.current) {
-          audioEngine.playAudioEffect('star');
-          audioEngine.speakText("Way to go! You built a full sentence!", { rate: 0.85 });
-          onAwardStar();
-        }
+    // The star is earned by building the sentence, so it is awarded here
+    // rather than after the reading: a child who presses Next straight away
+    // has still built it.
+    onAwardStar();
+
+    const token = sentenceTokenRef.current;
+    const solvedSentence = currentSentenceObj;
+
+    successTimerRef.current = setTimeout(() => {
+      successTimerRef.current = null;
+      if (sentenceTokenRef.current !== token) return;
+
+      readAloudWithHighlighting(token, solvedSentence).then(() => {
+        if (sentenceTokenRef.current !== token) return;
+        audioEngine.playAudioEffect('star');
+        audioEngine.speakText("Way to go! You built a full sentence!", { rate: 0.85 });
       });
     }, 400);
   };
@@ -119,17 +146,18 @@ export function SentenceSafari({ onAwardStar }) {
     audioEngine.speakText("Oops! Let's check the word order. Tap a word to change it!", { rate: 0.8 });
   };
 
-  const readAloudWithHighlighting = async () => {
-    const words = currentSentenceObj.words;
+  // Reads `sentenceObj` word by word under `token`, abandoning the run as soon
+  // as the screen has moved on to another sentence.
+  const readAloudWithHighlighting = async (token, sentenceObj) => {
+    const words = sentenceObj.words;
     for (let i = 0; i < words.length; i++) {
-      if (isCancelledRef.current) break;
+      if (sentenceTokenRef.current !== token) return;
       setActiveHighlightIndex(i);
       await audioEngine.speakText(words[i], { rate: 0.75 });
     }
-    if (!isCancelledRef.current) {
-      setActiveHighlightIndex(null);
-      await audioEngine.speakText(currentSentenceObj.targetSentence, { rate: 0.8 });
-    }
+    if (sentenceTokenRef.current !== token) return;
+    setActiveHighlightIndex(null);
+    await audioEngine.speakText(sentenceObj.targetSentence, { rate: 0.8 });
   };
 
   const getRandomSentence = () => {
@@ -236,7 +264,12 @@ export function SentenceSafari({ onAwardStar }) {
             </div>
 
             <div className="banner-actions">
-              <button className="btn-secondary read-again-btn" onClick={readAloudWithHighlighting}>
+              <button
+                className="btn-secondary read-again-btn"
+                onClick={() =>
+                  readAloudWithHighlighting(sentenceTokenRef.current, currentSentenceObj)
+                }
+              >
                 <Play className="icon-sm" />
                 <span>Read Along Again</span>
               </button>

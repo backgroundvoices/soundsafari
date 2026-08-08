@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mic, Volume2, ArrowLeft, ArrowRight, CheckCircle, Radio, Sparkles, Grid } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { CVC_WORDS } from '../utils/phonicsData';
@@ -20,8 +20,19 @@ export function SayAndPlay({ onAwardStar }) {
 
   const categories = ['All', 'Animals', 'Home', 'Nature', 'Vehicles', 'Food', 'Action', 'Toys'];
 
+  // Identifies the word on screen, so the praise queued behind a timer stays
+  // silent if the child has already moved to another word. See WordBakery for
+  // why a boolean flag cannot close this race.
+  const wordTokenRef = useRef(0);
+  const successTimerRef = useRef(null);
+
   useEffect(() => {
     return () => {
+      wordTokenRef.current += 1;
+      if (successTimerRef.current !== null) {
+        clearTimeout(successTimerRef.current);
+        successTimerRef.current = null;
+      }
       voiceRecognition.stopListening();
       audioEngine.stopSpeech();
     };
@@ -39,9 +50,16 @@ export function SayAndPlay({ onAwardStar }) {
   }, [selectedCategory]);
 
   useEffect(() => {
+    wordTokenRef.current += 1;
     if (targetObj) {
       resetState(targetObj);
     }
+    return () => {
+      if (successTimerRef.current !== null) {
+        clearTimeout(successTimerRef.current);
+        successTimerRef.current = null;
+      }
+    };
   }, [wordIndex, filteredWords]);
 
   const resetState = (wordObj) => {
@@ -115,10 +133,18 @@ export function SayAndPlay({ onAwardStar }) {
       origin: { y: 0.6 }
     });
 
-    setTimeout(() => {
+    // The star is earned by saying the word, so it is awarded here rather than
+    // after the praise: a child who moves on straight away has still said it.
+    onAwardStar();
+
+    const token = wordTokenRef.current;
+    const spokenWord = targetObj.word;
+
+    successTimerRef.current = setTimeout(() => {
+      successTimerRef.current = null;
+      if (wordTokenRef.current !== token) return;
       audioEngine.playAudioEffect('star');
-      audioEngine.speakText(`Super job! You said ${targetObj.word} perfectly!`, { rate: 0.85 });
-      onAwardStar();
+      audioEngine.speakText(`Super job! You said ${spokenWord} perfectly!`, { rate: 0.85 });
     }, 300);
   };
 
@@ -136,11 +162,13 @@ export function SayAndPlay({ onAwardStar }) {
   };
 
   const nextWord = () => {
+    audioEngine.stopSpeech();
     audioEngine.playAudioEffect('click');
     setWordIndex((prev) => (prev + 1) % filteredWords.length);
   };
 
   const prevWord = () => {
+    audioEngine.stopSpeech();
     audioEngine.playAudioEffect('click');
     setWordIndex((prev) => (prev - 1 + filteredWords.length) % filteredWords.length);
   };
