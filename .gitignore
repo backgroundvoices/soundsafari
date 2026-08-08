@@ -25,3 +25,5 @@ dist-ssr
 
 # Local scratch scripts for generating the room artwork
 scratch
+.vercel
+.env*
