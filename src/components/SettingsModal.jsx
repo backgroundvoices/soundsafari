@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Settings, Volume2, VolumeX, RefreshCw, Check } from 'lucide-react';
 import { audioEngine } from '../utils/audioEngine';
+import { OfflineSettings } from '../offline/OfflineSettings';
 
 export function SettingsModal({ isOpen, onClose, onResetProgress }) {
   const [speed, setSpeed] = useState(0.75);
@@ -123,6 +124,8 @@ export function SettingsModal({ isOpen, onClose, onResetProgress }) {
               <span>Test Current Voice & Sound</span>
             </button>
           </div>
+
+          <OfflineSettings />
 
           <hr className="settings-divider" />
 

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { offlinePlugin } from './src/offline/pwaPlugin.js';
 
 // https://vite.dev/config/
 // The app is served under /littlevoices/soundsafari, both on its own domain and
@@ -8,7 +9,7 @@ import react from '@vitejs/plugin-react';
 // otherwise every asset request lands on the SPA fallback and comes back as
 // HTML, and the module script is rejected for its MIME type.
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), offlinePlugin()],
   base: '/littlevoices/soundsafari/',
   build: { outDir: 'dist/littlevoices/soundsafari', emptyOutDir: true },
 });
